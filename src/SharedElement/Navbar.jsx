@@ -15,17 +15,18 @@ const Navbar = () => {
   const links = <div className="flex flex-col justify-center items-center md:flex-row gap-5">
     <li><NavLink to="/" className="px-5 py-1 lg:py-2 font-bold rounded-full bg-red-900 text-white">Home </NavLink></li>
     <li><NavLink to="/allProperties" className="px-5 py-1 lg:py-2 font-bold rounded-full bg-red-900 text-white">All Properties</NavLink></li>
-    <li><NavLink to="/dashboard" className="px-5 py-1 lg:py-2 font-bold rounded-full bg-red-900 text-white">Dashboard</NavLink></li>
+    {/* <li><NavLink to="/dashboard" className="px-5 py-1 lg:py-2 font-bold rounded-full bg-red-900 text-white">Dashboard</NavLink></li> */}
     {
       user ?
         <div className="flex flex-col justify-center items-center md:flex-row ">
           <div className="dropdown dropdown-end">
-            <label tabIndex={0} className="px-5 py-1 lg:py-2 font-bold rounded-full bg-red-900 text-white">My Profile</label>
+            <label tabIndex={0} className="px-5 py-1 lg:py-2 font-bold rounded-full bg-red-900 text-white">Dashboard</label>
 
             <ul tabIndex={0} className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 mt-4">
-              <li> <NavLink to="/addFoodItem" className="px-5 mb-2 py-1 lg:py-2 font-bold rounded-full bg-red-900 text-white">Add Food Item</NavLink></li>
-              <li> <NavLink to="/addedItems" className="px-5 mb-2 py-1 lg:py-2 font-bold rounded-full bg-red-900 text-white">My Added Food Items</NavLink></li>
-              <li> <NavLink to="/order" className="px-5 py-1 lg:py-2 font-bold rounded-full bg-red-900 text-white">My Order</NavLink></li>
+              <li> <NavLink to="/myProfile" className="px-5 mb-2 py-1 lg:py-2 font-bold rounded-full bg-red-900 text-white">My Profile</NavLink></li>
+              <li> <NavLink to="/wishlist" className="px-5 mb-2 py-1 lg:py-2 font-bold rounded-full bg-red-900 text-white">Wishlist</NavLink></li>
+              <li> <NavLink to="/propertyBought" className="px-5 py-1 lg:py-2 font-bold rounded-full bg-red-900 text-white">Property Bought</NavLink></li>
+              <li> <NavLink to="/myReviews" className="px-5 py-1 lg:py-2 font-bold rounded-full bg-red-900 text-white">My Reviews</NavLink></li>
             </ul>
           </div>
 
