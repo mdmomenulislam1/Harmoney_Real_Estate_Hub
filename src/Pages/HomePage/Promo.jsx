@@ -11,7 +11,7 @@ const Promo = () => {
         slidesPerView={3}
         onSlideChange={() => console.log('slide change')}
         onSwiper={(swiper) => console.log(swiper)}
-        className='max-w-screen-lg my-10'
+        className='max-w-screen-xl my-10'
 
         centeredSlides={true}
 
@@ -22,13 +22,28 @@ const Promo = () => {
 
       >
         <SwiperSlide>
-          <img className='w-60 h-60' src="https://i.ibb.co/wp11rQh/OIP.jpg" alt="" />
+          <img className="w-84 h-full" src="https://i.ibb.co/wp11rQh/OIP.jpg" alt="" />
         </SwiperSlide>
-        <SwiperSlide><img className='w-60 h-60' src="https://i.ibb.co/mtCZZk3/OIP.jpg" alt="" />
+        <SwiperSlide>
+          <img className="w-84 h-full" src="https://i.ibb.co/mtCZZk3/OIP.jpg" alt="" />
         </SwiperSlide>
-        <SwiperSlide><img className='w-60 h-60' src="https://i.ibb.co/cTkM12h/OIP.jpg" alt="" />
+        <SwiperSlide>
+          <img className="w-84 h-full" src="https://i.ibb.co/cTkM12h/OIP.jpg" alt="" />
         </SwiperSlide>
-        <SwiperSlide><img className='w-60 h-60' src="https://i.ibb.co/mtCZZk3/OIP.jpg" alt="" />
+        <SwiperSlide>
+          <img className="w-84 h-full" src="https://i.ibb.co/mtCZZk3/OIP.jpg" alt="" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img className="w-84 h-full" src="https://i.ibb.co/wp11rQh/OIP.jpg" alt="" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img className="w-84 h-full" src="https://i.ibb.co/mtCZZk3/OIP.jpg" alt="" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img className="w-84 h-full" src="https://i.ibb.co/cTkM12h/OIP.jpg" alt="" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img className="w-84 h-full" src="https://i.ibb.co/mtCZZk3/OIP.jpg" alt="" />
         </SwiperSlide>
 
       </Swiper>

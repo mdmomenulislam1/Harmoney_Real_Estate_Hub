@@ -21,6 +21,12 @@ import {
 } from '@tanstack/react-query'
 import DetailsPage from './Pages/DetailsPage/DetailsPage.jsx';
 import PrivateRoute from './Firebase/PrivateProvider.jsx';
+import MyProfile from './Pages/MyProfilePage/MyProfile.jsx';
+import Wishlist from './Pages/WishlistPage/Wishlist.jsx';
+import PropertyBought from './Pages/PropertyBought/PropertyBought.jsx';
+import MyReviews from './Pages/MyReviewsPage/MyReviews.jsx';
+import AgentProfile from './Pages/AgentProfile/AgentProfile.jsx';
+import MyAddedProperties from './Pages/MyAddedPage/MyAddedProperties.jsx';
 
 const queryClient = new QueryClient();
 
@@ -41,6 +47,34 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <PrivateRoute> <Dashboard></Dashboard> </PrivateRoute>
+      },
+      {
+        path: "/dashboard/myProfile",
+        element: <PrivateRoute> <MyProfile></MyProfile> </PrivateRoute>
+      },
+      {
+        path: "/dashboard/wishlist",
+        element: <PrivateRoute> <Wishlist></Wishlist> </PrivateRoute>
+      },
+      {
+        path: "/dashboard/propertyBought",
+        element: <PrivateRoute> <PropertyBought></PropertyBought> </PrivateRoute>
+      },
+      {
+        path: "/dashboard/myReviews",
+        element: <PrivateRoute> <MyReviews></MyReviews> </PrivateRoute>
+      },
+      {
+        path: "/dashboard/agentProfile",
+        element: <PrivateRoute> <AgentProfile></AgentProfile> </PrivateRoute>
+      },
+      {
+        path: "/dashboard/mySoldProperties",
+        element: <PrivateRoute> <MyAddedProperties></MyAddedProperties> </PrivateRoute>
+      },
+      {
+        path: "/dashboard/myAddedProperties",
+        element: <PrivateRoute> <MyAddedProperties></MyAddedProperties> </PrivateRoute>
       },
       {
         path: "/login",

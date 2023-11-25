@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Helmet } from 'react-helmet';
 import { AuthContext } from '../../Firebase/AuthProvider';
 
-const MyProfile = () => {
+const AgentProfile = () => {
   const { user } = useContext(AuthContext);
   
   return (
@@ -28,4 +28,4 @@ const MyProfile = () => {
   );
 };
 
-export default MyProfile;
+export default AgentProfile;
