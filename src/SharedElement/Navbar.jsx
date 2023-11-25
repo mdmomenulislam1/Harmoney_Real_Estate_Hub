@@ -20,14 +20,9 @@ const Navbar = () => {
       user ?
         <div className="flex flex-col justify-center items-center md:flex-row ">
           <div className="dropdown dropdown-end">
-            <label tabIndex={0} className="px-5 py-1 lg:py-2 font-bold rounded-full bg-red-900 text-white">Dashboard</label>
-
-            <ul tabIndex={0} className="menu dropdown-content z-[1] p-2 shadow bg-base-100 rounded-box w-52 mt-4">
-              <li> <NavLink to="/myProfile" className="px-5 mb-2 py-1 lg:py-2 font-bold rounded-full bg-red-900 text-white">My Profile</NavLink></li>
-              <li> <NavLink to="/wishlist" className="px-5 mb-2 py-1 lg:py-2 font-bold rounded-full bg-red-900 text-white">Wishlist</NavLink></li>
-              <li> <NavLink to="/propertyBought" className="px-5 py-1 lg:py-2 font-bold rounded-full bg-red-900 text-white">Property Bought</NavLink></li>
-              <li> <NavLink to="/myReviews" className="px-5 py-1 lg:py-2 font-bold rounded-full bg-red-900 text-white">My Reviews</NavLink></li>
-            </ul>
+          <Link to={"/dashboard"} className="flex ">
+            <button className="px-5 py-1 lg:py-2 font-bold rounded-full bg-red-900 text-white">Dashboard</button>
+          </Link>
           </div>
 
           <img src={user.photoURL} alt="" className="w-[50px] h-[50px] rounded-full m-5" />

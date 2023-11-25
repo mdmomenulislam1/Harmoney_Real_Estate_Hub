@@ -32,6 +32,7 @@ import REquestedProperties from './Pages/RequestedProperties/REquestedProperties
 import AdminProfile from './Pages/AdminProfile/AdminProfile.jsx';
 import ManageProperties from './Pages/ManageProperties/ManageProperties.jsx';
 import ManageUsers from './Pages/ManageUsers/ManageUsers.jsx';
+import ManageReviews from './Pages/ManageReviewa/ManageReviews.jsx';
 
 const queryClient = new QueryClient();
 
@@ -49,10 +50,78 @@ const router = createBrowserRouter([
         path: "/allProperties",
         element: <PrivateRoute> <AllProperties></AllProperties> </PrivateRoute>
       },
+      // {
+      //   path: "/dashboard",
+      //   element: <PrivateRoute> <Dashboard></Dashboard> </PrivateRoute>
+      // },
+      // {
+      //   path: "/dashboard/myProfile",
+      //   element: <PrivateRoute> <MyProfile></MyProfile> </PrivateRoute>
+      // },
+      // {
+      //   path: "/dashboard/wishlist",
+      //   element: <PrivateRoute> <Wishlist></Wishlist> </PrivateRoute>
+      // },
+      // {
+      //   path: "/dashboard/propertyBought",
+      //   element: <PrivateRoute> <PropertyBought></PropertyBought> </PrivateRoute>
+      // },
+      // {
+      //   path: "/dashboard/myReviews",
+      //   element: <PrivateRoute> <MyReviews></MyReviews> </PrivateRoute>
+      // },
+      // {
+      //   path: "/dashboard/agentProfile",
+      //   element: <PrivateRoute> <AgentProfile></AgentProfile> </PrivateRoute>
+      // },
+      // {
+      //   path: "/dashboard/mySoldProperties",
+      //   element: <PrivateRoute> <MyAddedProperties></MyAddedProperties> </PrivateRoute>
+      // },
+      // {
+      //   path: "/dashboard/requestedProperties",
+      //   element: <PrivateRoute> <REquestedProperties></REquestedProperties> </PrivateRoute>
+      // },
+      // {
+      //   path: "/dashboard/myAddedProperties",
+      //   element: <PrivateRoute> <MySoldProperties></MySoldProperties> </PrivateRoute>
+      // },
+      // {
+      //   path: "/dashboard/adminProfile",
+      //   element: <PrivateRoute> <AdminProfile></AdminProfile> </PrivateRoute>
+      // },
+      // {
+      //   path: "/dashboard/manageProperties",
+      //   element: <PrivateRoute> <ManageProperties></ManageProperties> </PrivateRoute>
+      // },
+      // {
+      //   path: "/dashboard/manageUsers",
+      //   element: <PrivateRoute> <ManageUsers></ManageUsers></PrivateRoute>
+      // },
+      // {
+      //   path: "/dashboard/manageReviews",
+      //   element: <PrivateRoute> <ManageReviews></ManageReviews> </PrivateRoute>
+      // },
       {
-        path: "/dashboard",
-        element: <PrivateRoute> <Dashboard></Dashboard> </PrivateRoute>
+        path: "/login",
+        element: <Login></Login>
       },
+      {
+        path: "/registration",
+        element: <Registration></Registration>
+      },
+      {
+        path: "/allProperties/:_id",
+        element: <PrivateRoute><DetailsPage></DetailsPage></PrivateRoute>,
+        loader: ({ params }) => fetch(`http://localhost:5000/property/${params._id}`)
+      }
+    ]
+  },
+  {
+    path: "/dashboard",
+    element:  <PrivateRoute> <Dashboard></Dashboard> </PrivateRoute>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
       {
         path: "/dashboard/myProfile",
         element: <PrivateRoute> <MyProfile></MyProfile> </PrivateRoute>
@@ -99,23 +168,10 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/manageReviews",
-        element: <PrivateRoute>  <MyAddedProperties></MyAddedProperties> </PrivateRoute>
-      },
-      {
-        path: "/login",
-        element: <Login></Login>
-      },
-      {
-        path: "/registration",
-        element: <Registration></Registration>
-      },
-      {
-        path: "/allProperties/:_id",
-        element: <PrivateRoute><DetailsPage></DetailsPage></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/property/${params._id}`)
+        element: <PrivateRoute> <ManageReviews></ManageReviews> </PrivateRoute>
       }
     ]
-  },
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
