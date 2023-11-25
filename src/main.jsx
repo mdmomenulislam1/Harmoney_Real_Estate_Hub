@@ -34,6 +34,7 @@ import ManageProperties from './Pages/ManageProperties/ManageProperties.jsx';
 import ManageUsers from './Pages/ManageUsers/ManageUsers.jsx';
 import ManageReviews from './Pages/ManageReviewa/ManageReviews.jsx';
 import AddProperty from './Pages/AddProperty/AddProperty.jsx';
+import Offered from './Pages/WishlistPage/Offered.jsx';
 
 const queryClient = new QueryClient();
 
@@ -131,6 +132,14 @@ const router = createBrowserRouter([
         path: "/dashboard/wishlist",
         element: <PrivateRoute> <Wishlist></Wishlist> </PrivateRoute>
       },
+
+
+      {
+        path: "/dashboard/wishlist/:_id",
+        element: <PrivateRoute> <Offered></Offered> </PrivateRoute>,
+        loader: ({ params }) => fetch(`http://localhost:5000/wishedProperty/${params._id}`)
+      },
+
       {
         path: "/dashboard/propertyBought",
         element: <PrivateRoute> <PropertyBought></PropertyBought> </PrivateRoute>
