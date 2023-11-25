@@ -27,6 +27,11 @@ import PropertyBought from './Pages/PropertyBought/PropertyBought.jsx';
 import MyReviews from './Pages/MyReviewsPage/MyReviews.jsx';
 import AgentProfile from './Pages/AgentProfile/AgentProfile.jsx';
 import MyAddedProperties from './Pages/MyAddedPage/MyAddedProperties.jsx';
+import MySoldProperties from './Pages/MySoldPage/MySoldProperties.jsx';
+import REquestedProperties from './Pages/RequestedProperties/REquestedProperties.jsx';
+import AdminProfile from './Pages/AdminProfile/AdminProfile.jsx';
+import ManageProperties from './Pages/ManageProperties/ManageProperties.jsx';
+import ManageUsers from './Pages/ManageUsers/ManageUsers.jsx';
 
 const queryClient = new QueryClient();
 
@@ -73,8 +78,28 @@ const router = createBrowserRouter([
         element: <PrivateRoute> <MyAddedProperties></MyAddedProperties> </PrivateRoute>
       },
       {
+        path: "/dashboard/requestedProperties",
+        element: <PrivateRoute> <REquestedProperties></REquestedProperties> </PrivateRoute>
+      },
+      {
         path: "/dashboard/myAddedProperties",
-        element: <PrivateRoute> <MyAddedProperties></MyAddedProperties> </PrivateRoute>
+        element: <PrivateRoute> <MySoldProperties></MySoldProperties> </PrivateRoute>
+      },
+      {
+        path: "/dashboard/adminProfile",
+        element: <PrivateRoute> <AdminProfile></AdminProfile> </PrivateRoute>
+      },
+      {
+        path: "/dashboard/manageProperties",
+        element: <PrivateRoute> <ManageProperties></ManageProperties> </PrivateRoute>
+      },
+      {
+        path: "/dashboard/manageUsers",
+        element: <PrivateRoute> <ManageUsers></ManageUsers></PrivateRoute>
+      },
+      {
+        path: "/dashboard/manageReviews",
+        element: <PrivateRoute>  <MyAddedProperties></MyAddedProperties> </PrivateRoute>
       },
       {
         path: "/login",
