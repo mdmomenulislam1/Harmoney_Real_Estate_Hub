@@ -33,6 +33,7 @@ import AdminProfile from './Pages/AdminProfile/AdminProfile.jsx';
 import ManageProperties from './Pages/ManageProperties/ManageProperties.jsx';
 import ManageUsers from './Pages/ManageUsers/ManageUsers.jsx';
 import ManageReviews from './Pages/ManageReviewa/ManageReviews.jsx';
+import AddProperty from './Pages/AddProperty/AddProperty.jsx';
 
 const queryClient = new QueryClient();
 
@@ -143,8 +144,12 @@ const router = createBrowserRouter([
         element: <PrivateRoute> <AgentProfile></AgentProfile> </PrivateRoute>
       },
       {
+        path: "/dashboard/addProperty",
+        element: <PrivateRoute> <AddProperty></AddProperty> </PrivateRoute>
+      },
+      {
         path: "/dashboard/mySoldProperties",
-        element: <PrivateRoute> <MyAddedProperties></MyAddedProperties> </PrivateRoute>
+        element: <PrivateRoute> <MySoldProperties></MySoldProperties> </PrivateRoute>
       },
       {
         path: "/dashboard/requestedProperties",
@@ -152,7 +157,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/myAddedProperties",
-        element: <PrivateRoute> <MySoldProperties></MySoldProperties> </PrivateRoute>
+        element: <PrivateRoute>  <MyAddedProperties></MyAddedProperties>  </PrivateRoute>
       },
       {
         path: "/dashboard/adminProfile",
