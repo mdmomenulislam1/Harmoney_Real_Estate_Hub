@@ -1,8 +1,47 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import useAxiousSecure from '../../Hooks/useAxiousSecure';
+import { useQuery } from '@tanstack/react-query';
 
 const WishedItem = ({ item }) => {
+  const { data: wishedProperty = [], refetch } = useQuery({
+    queryKey: ['wishedProperty'],
+    queryFn: async () => {
+        const res = await axiosSecure.get('/wishedProperty');
+        return res.data;
+    }
+})
+  const axiosSecure = useAxiousSecure();
   const { _id, property_image, property_title, agent_name, agent_image, property_location, price_range, verification_status } = item;
+
+  const handleDeleteProperty = item => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        axiosSecure.delete(`/wishedProperty/${_id}`)
+          .then(res => {
+            if (res.data.deletedCount > 0) {
+              refetch();
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success"
+              });
+            }
+          })
+      }
+    });
+  }
+
   return (
     <div className="rounded-lg shadow-lg">
       <img className="h-[300px] rounded-t-lg w-full" src={property_image} alt="" />
@@ -18,9 +57,9 @@ const WishedItem = ({ item }) => {
         <p className="font-medium">{verification_status}</p>
         <div className="flex gap-3">
           <Link to={`/dashboard/wishlist/${_id}`}>
-          <button className="btn text-2xl font-bold btn-outline border-0 border-b-4 mt-4"> Make An Offer </button>
+            <button className="btn text-2xl font-bold btn-outline border-0 border-b-4 mt-4"> Make An Offer </button>
           </Link>
-          <button className="btn text-2xl font-bold btn-outline border-0 border-b-4 mt-4"> Remove Property </button>
+          <button onClick={() => handleDeleteProperty(item)} className="btn text-2xl font-bold btn-outline border-0 border-b-4 mt-4"> Remove Property </button>
         </div>
       </div>
 

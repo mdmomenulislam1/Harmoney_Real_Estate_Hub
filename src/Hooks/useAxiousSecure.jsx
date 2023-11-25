@@ -3,15 +3,15 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Firebase/AuthProvider";
 
-const axiosSecure = axios.create({
+const axiousSecure = axios.create({
     baseURL: 'http://localhost:5000'
 })
-const useAxiosSecure = () => {
+const useAxiousSecure = () => {
     const navigate = useNavigate();
     const { logOut } = useContext(AuthContext);
 
     // request interceptor to add authorization header for every secure call to teh api
-    axiosSecure.interceptors.request.use(function (config) {
+    axiousSecure.interceptors.request.use(function (config) {
         const token = localStorage.getItem('access-token')
         // console.log('request stopped by interceptors', token)
         config.headers.authorization = `Bearer ${token}`;
@@ -23,7 +23,7 @@ const useAxiosSecure = () => {
 
 
     // intercepts 401 and 403 status
-    axiosSecure.interceptors.response.use(function (response) {
+    axiousSecure.interceptors.response.use(function (response) {
         return response;
     }, async (error) => {
         const status = error.response.status;
@@ -37,7 +37,7 @@ const useAxiosSecure = () => {
     })
 
 
-    return axiosSecure;
+    return axiousSecure;
 };
 
-export default useAxiosSecure;
+export default useAxiousSecure;

@@ -5,8 +5,8 @@ import { AuthContext } from '../../Firebase/AuthProvider';
 
 const Wishlist = () => {
   const {user} = useContext(AuthContext);
-  const [wishedProperty] = useWishlist();
-  console.log(wishedProperty);
+  const [wishedProperty, refetch] = useWishlist();
+  // console.log(wishedProperty);
   const wished = wishedProperty?.filter((item) => item?.buyer_email === user?.email);
 
 
@@ -19,6 +19,7 @@ const Wishlist = () => {
                    wished?.map(item => <WishedItem
                       key={item._id}
                       item={item}
+                      refetch={refetch}
                   ></WishedItem>)
               }
           </div>
