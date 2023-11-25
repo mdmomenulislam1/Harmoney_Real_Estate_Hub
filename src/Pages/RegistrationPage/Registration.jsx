@@ -25,6 +25,8 @@ const Registration = () => {
         const userInfo = {
           name: result?.user?.displayName,
           email: result?.user?.email,
+          profile: result?.user?.photoURL,
+          role: ''
         }
         axiosPublic.post('/user', userInfo)
           .then(res => {
@@ -64,8 +66,10 @@ const Registration = () => {
         .then((result) => {
 
           const userInfo = {
-            name,
-            email,
+            name: result?.user?.displayName,
+            email: result?.user?.email,
+            profile: result?.user?.photoURL,
+            role: ''
           }
           axiosPublic.post('/user', userInfo)
             .then(res => {
