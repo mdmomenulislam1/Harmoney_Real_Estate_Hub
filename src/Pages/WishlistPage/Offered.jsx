@@ -7,7 +7,7 @@ const Offered = () => {
   const {user} = useContext(AuthContext);
 
   const wishedItem = useLoaderData();
-  const { property_title, agent_name, property_location, price_range } = wishedItem;
+  const { property_title, property_image, agent_name, property_location, price_range } = wishedItem;
 
   const today = new Date();
 
@@ -31,7 +31,7 @@ const Offered = () => {
 
     
     const offeredData = {
-      propertyName, propertyLocation, agentName, buyerName, buyerEmail, offeredAmount, orderedDate, status : "Pending"
+      propertyName, propertyLocation, property_image, agentName, buyerName, buyerEmail, offeredAmount, orderedDate, status : "Pending"
     }
     
     fetch('http://localhost:5000/offeredProperty', {

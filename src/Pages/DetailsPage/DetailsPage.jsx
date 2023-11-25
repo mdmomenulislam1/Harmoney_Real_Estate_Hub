@@ -67,6 +67,7 @@ const DetailsPage = () => {
       property_title,
       rating,
       review,
+      agent_name,
       review_time,
       reviewer_name: user?.displayName,
       reviewer_email: user?.email,

@@ -35,6 +35,8 @@ import ManageUsers from './Pages/ManageUsers/ManageUsers.jsx';
 import ManageReviews from './Pages/ManageReviewa/ManageReviews.jsx';
 import AddProperty from './Pages/AddProperty/AddProperty.jsx';
 import Offered from './Pages/WishlistPage/Offered.jsx';
+import Payment from './Pages/PropertyBought/Payment.jsx';
+import UpdatedProperty from './Pages/MyAddedPage/UpdatedProperty.jsx';
 
 const queryClient = new QueryClient();
 
@@ -141,6 +143,12 @@ const router = createBrowserRouter([
       },
 
       {
+        path: "/dashboard/payment/:_id",
+        element: <PrivateRoute> <Payment></Payment> </PrivateRoute>,
+        loader: ({ params }) => fetch(`http://localhost:5000/offeredProperty/${params._id}`)
+      },
+
+      {
         path: "/dashboard/propertyBought",
         element: <PrivateRoute> <PropertyBought></PropertyBought> </PrivateRoute>
       },
@@ -168,6 +176,14 @@ const router = createBrowserRouter([
         path: "/dashboard/myAddedProperties",
         element: <PrivateRoute>  <MyAddedProperties></MyAddedProperties>  </PrivateRoute>
       },
+
+      {
+        path: "/dashboard/update/:_id",
+        element: <PrivateRoute><UpdatedProperty></UpdatedProperty></PrivateRoute>,
+        loader: ({ params }) => fetch(`http://localhost:5000/property/${params._id}`)
+      },
+
+
       {
         path: "/dashboard/adminProfile",
         element: <PrivateRoute> <AdminProfile></AdminProfile> </PrivateRoute>
