@@ -2,7 +2,7 @@ import { FaBan, FaTrash } from "react-icons/fa";
 import { FaPersonArrowUpFromLine, FaPersonCircleExclamation } from "react-icons/fa6";
 import swal from "sweetalert";
 
-const ManageUser = ({ Item}) => {
+const ManageUser = ({ Item, index}) => {
   const { _id, name, email, role, profile } = Item || {}
  
   const handleAdmin = () => {
@@ -97,6 +97,7 @@ const ManageUser = ({ Item}) => {
   return (
     <tr key={Item._id} className="text-xl text-slate-500 font-semibold">
 
+      <td className="border-2 border-yellow-600 ">{index+1}</td>
       <td className="border-2 border-yellow-600 ">{name}</td>
       <td className="border-2 border-yellow-600 ">{email}</td>
       <td className="border-2 border-yellow-600 ">

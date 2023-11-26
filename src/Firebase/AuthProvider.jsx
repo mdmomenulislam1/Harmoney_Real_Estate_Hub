@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { app } from "./firebase.config";
 import axios from "axios";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
@@ -16,6 +17,7 @@ const AuthProvider = ({ children }) => {
     }
 
     const googleProvider = new GoogleAuthProvider();
+    const axiosPublic = useAxiosPublic();
 
     const signIn = (email, password) => {
         setLoading(true);
@@ -35,8 +37,7 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser);
             setLoading(false);
             if (currentUser) {
-                
-                axios.post('https://assignment-11-server-site-pi.vercel.app/jwt', loggedUser, { withCredentials: true })
+                axiosPublic.post('/jwt', loggedUser, { withCredentials: true })
                     .then(res => {
                         console.log('token response', res.data);
                     })

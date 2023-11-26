@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import useAxiousSecure from "../../Hooks/useAxiousSecure";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 
 const AddedItem = ({ item }) => {
@@ -12,7 +12,7 @@ const AddedItem = ({ item }) => {
         return res.data;
     }
 })
-  const axiosSecure = useAxiousSecure();
+  const axiosSecure = useAxiosSecure();
   const { _id, property_image, property_title, agent_name, agent_image, property_location, price_range, verification_status } = item;
 
   const handleDeleteProperty = _id => {

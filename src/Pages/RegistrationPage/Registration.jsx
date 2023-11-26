@@ -6,7 +6,7 @@ import swal from "sweetalert";
 import { Helmet } from "react-helmet";
 import { AuthContext } from "../../Firebase/AuthProvider";
 import { app } from "../../Firebase/firebase.config";
-import useAxiosPublic from "../../Hooks/useAxiousPublic";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 
 

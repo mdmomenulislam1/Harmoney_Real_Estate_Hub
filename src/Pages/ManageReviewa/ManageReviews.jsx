@@ -4,43 +4,38 @@ import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 import { FaQuoteRight } from "react-icons/fa";
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const ManageReviews = () => {
   const [review, refetch] = useReview();
+  const axiosSecure = useAxiosSecure();
+
 
   const handleDeleteReview = _id => {
-    const proceed = () => {
-      Swal.fire({
-        title: 'Are you sure?',
-        text: 'You won\'t be able to revert this!',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: 'No, cancel!',
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
-          Swal.fire('Cancelled', 'Your file is safe.', 'error');
-        }
-      });
-    };
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
 
-    if (proceed) {
-      fetch(`http://localhost:5000/review/${_id}`, {
-        method: 'DELETE'
-      })
-        .then(res => res.json())
-        .then(data => {
-          console.log(data);
-          if (data.deletedCount > 0) {
-            swal("Okay, Done!", "Order Cancel successfully!", "success");
-            // const remaining = order.filter(booking => booking._id !== id);
-            // setOrder(remaining);
-            // refetch()
-          }
-        })
-    }
+        axiosSecure.delete(`/review/${_id}`)
+          .then(res => {
+            if (res.data.deletedCount > 0) {
+              refetch();
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success"
+              });
+            }
+          })
+      }
+    });
   }
 
   return (

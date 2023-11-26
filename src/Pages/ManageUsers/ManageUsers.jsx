@@ -4,6 +4,7 @@ import ManageUser from './ManageUser';
 const ManageUsers = () => {
   const [userInfo] = useUsers([]);
   
+  
 
 
   return (
@@ -17,6 +18,7 @@ const ManageUsers = () => {
               <thead className="">
                 <tr className="font-bold text-2xl text-yellow-600">
 
+                  <th className="border-2 border-yellow-600 ">SL.</th>
                   <th className="border-2 border-yellow-600 ">Name</th>
                   <th className="border-2 border-yellow-600 ">Email</th>
                   <th className="border-2 border-yellow-600 ">Make Admin</th>
@@ -29,10 +31,14 @@ const ManageUsers = () => {
               <tbody>
 
                 {
-                  userInfo?.map((Item) => <ManageUser
+                  userInfo?.map((Item, index) => <ManageUser
                     key={Item._id}
                     Item={Item}
-                    ></ManageUser>)
+                    index={index}
+                    >
+
+                      
+                    </ManageUser>)
                 }
               </tbody>
             </table>
