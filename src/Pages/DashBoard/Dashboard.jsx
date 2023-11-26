@@ -24,6 +24,18 @@ const Dashboard = () => {
       <div className="flex">
         <div className="h-screen w-1/3 ">
           <ul className="menu p-5 shadow-lg h-full mt-4">
+            {
+              (userData[0]?.role !== "Agent" && userData[0]?.role !== "Admin")
+                ? <>
+                  <li> <NavLink to="/dashboard/myProfile" className="p-5 mb-2   font-bold rounded-lg bg-red-900 text-white">My Profile</NavLink></li>
+                  <li> <NavLink to="/dashboard/wishlist" className="p-5 mb-2   font-bold rounded-lg bg-red-900 text-white">Wishlist</NavLink></li>
+                  <li> <NavLink to="/dashboard/propertyBought" className="p-5  mb-2  font-bold rounded-lg bg-red-900 text-white">Property Bought</NavLink></li>
+                  <li> <NavLink to="/dashboard/myReviews" className="p-5  mb-2  font-bold rounded-lg bg-red-900 text-white">My Reviews</NavLink></li>
+                </>
+                :
+                <>
+                </>
+            }
 
 
             {
@@ -36,10 +48,6 @@ const Dashboard = () => {
               </>
                 :
                 <>
-                  <li> <NavLink to="/dashboard/myProfile" className="p-5 mb-2   font-bold rounded-lg bg-red-900 text-white">My Profile</NavLink></li>
-                  <li> <NavLink to="/dashboard/wishlist" className="p-5 mb-2   font-bold rounded-lg bg-red-900 text-white">Wishlist</NavLink></li>
-                  <li> <NavLink to="/dashboard/propertyBought" className="p-5  mb-2  font-bold rounded-lg bg-red-900 text-white">Property Bought</NavLink></li>
-                  <li> <NavLink to="/dashboard/myReviews" className="p-5  mb-2  font-bold rounded-lg bg-red-900 text-white">My Reviews</NavLink></li>
 
                 </>}
 

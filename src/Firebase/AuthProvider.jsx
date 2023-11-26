@@ -3,6 +3,7 @@ import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStat
 import { app } from "./firebase.config";
 import axios from "axios";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
+import { set } from "react-hook-form";
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
@@ -10,14 +11,13 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const googleProvider = new GoogleAuthProvider();
+    const axiosPublic = useAxiosPublic();
 
     const createUser = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
-
-    const googleProvider = new GoogleAuthProvider();
-    const axiosPublic = useAxiosPublic();
 
     const signIn = (email, password) => {
         setLoading(true);
@@ -31,28 +31,27 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
-            console.log('user in the auth state changed', currentUser);
             const userEmail = currentUser?.email || user?.mail;
             const loggedUser = { email: userEmail };
             setUser(currentUser);
-            setLoading(false);
+            setLoading(false)
             if (currentUser) {
-                axiosPublic.post('/jwt', loggedUser, { withCredentials: true })
+                axiosPublic.post('/jwt', loggedUser)
                     .then(res => {
-                        console.log('token response', res.data);
+                        if (res.data.token) {
+                            localStorage.setItem('access-token', res.data.token);
+                        }
                     })
             }
             else {
-                axios.post('https://assignment-11-server-site-pi.vercel.app/logout', loggedUser, { withCredentials: true })
-                    .then(res => {
-                        console.log('token response', res.data);
-                    })
+                localStorage.removeItem('access-token');
+                setLoading(false);
             }
         });
         return () => {
             unSubscribe();
         }
-    }, [])
+    }, [axiosPublic])
 
     const authInfo = {
         user,

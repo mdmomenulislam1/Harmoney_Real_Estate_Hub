@@ -4,18 +4,18 @@ import { AuthContext } from "../Firebase/AuthProvider";
 import useAxiosSecure from "./UseAxiosSecure";
 
 
-const useAdmin = () => {
+const useAgent = () => {
     const { user, loading } = useContext(AuthContext);
     const axiosSecure = useAxiosSecure();
-    const { data: isAdmin, isPending: isAdminLoading } = useQuery({
-        queryKey: [user?.email, 'isAdmin'],
+    const { data: isAgent, isPending: isAgentLoading } = useQuery({
+        queryKey: [user?.email, 'isAgent'],
         enabled: !loading,
         queryFn: async () => {
-            const res = await axiosSecure.get(`/user/admin/${user.email}`);
-            return res.data?.admin;
+            const res = await axiosSecure.get(`/user/agent/${user.email}`);
+            return res.data?.agent;
         }
     })
-    return [isAdmin, isAdminLoading]
+    return [isAgent, isAgentLoading]
 };
 
-export default useAdmin;
+export default useAgent;

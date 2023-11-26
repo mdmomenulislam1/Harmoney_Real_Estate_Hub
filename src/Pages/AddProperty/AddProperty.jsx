@@ -1,11 +1,66 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../Firebase/AuthProvider';
 import swal from 'sweetalert';
+import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
+
 
 const AddProperty = () => {
   const { user } = useContext(AuthContext);
+  // const {register, handleSubmit, reset } = useForm()
 
-  const handleAddProperty = (e) => {
+  //   const onSubmit = async (data) => {
+  //     console.log(data)
+  //     // image upload to imgbb and then get an url
+  //     const imageFile = { image: data.image[0]  }
+  //     const res = await axiosPublic.post(image_hosting_api, imageFile, {
+  //         headers: {
+  //             'content-type': 'multipart/form-data'
+  //         }
+  //     });
+  //     if (res.data.success) {
+  //         // now send the menu item data to the server with the image url
+  //         const propertyData = {
+  //           property_title,
+  //           property_image,
+  //           property_location,
+  //           agent_name,
+  //           agent_email,
+  //           agent_image: user?.photoURL,
+  //           price_range,
+  //           verification_status: "Pending",
+  //           property_description
+  //         }
+  //         // 
+  //         const propertyRes = await axiosSecure.post('/property', propertyData);
+  //         console.log(property.data)
+  //         if(propertyRes.data.insertedId){
+  //             // show success popup
+  //             reset();
+  //             Swal.fire({
+  //                 position: "top-end",
+  //                 icon: "success",
+  //                 title: `${data.name} is added to the menu.`,
+  //                 showConfirmButton: false,
+  //                 timer: 1500
+  //               });
+  //         }
+  //     }
+  //     console.log( 'with image url', res.data);
+  // };
+
+
+
+
+  // const [img, setImg] = useState(null);
+
+
+
+  const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING;
+  const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
+
+
+  const handleAddProperty = async (e) => {
     e.preventDefault();
     const form = e.target;
     const property_title = form.property_title.value;
@@ -27,6 +82,7 @@ const AddProperty = () => {
       verification_status: "Pending",
       property_description
     }
+
     fetch('http://localhost:5000/property', {
       method: "POST",
       headers: {
@@ -42,6 +98,8 @@ const AddProperty = () => {
         }
       });
   }
+
+
   return (
     <div>
       <h2 className="text-2xl">App A Property</h2>
@@ -55,7 +113,7 @@ const AddProperty = () => {
 
           <div className="flex justify-center items-center w-full">
             <p className=" text-black font-bold w-[200px]">Property Photo URL</p>
-            <input type="text" name="property_image" id="" placeholder="Property Photo URL" required className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
+            <input type="file" name="property_image" id="" placeholder="Property Photo URL" required className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
           </div>
 
           <div className="flex justify-center items-center w-full">

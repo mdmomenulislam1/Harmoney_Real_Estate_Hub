@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 
 const PropertyItem = ({ item }) => {
-  const { _id, property_image, property_title, property_location, price_range, verification_status } = item;
+  const { _id, property_image, property_title, property_location, price_range, verification_status } = item || {};
   return (
     <div className="flex justify-between rounded-lg gap-5 md:gap-8 shadow-lg">
       <img className="w-[300px] rounded-l-lg h-full" src={property_image} alt="" />

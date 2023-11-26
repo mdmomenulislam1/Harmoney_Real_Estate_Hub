@@ -22,6 +22,7 @@ const Login = () => {
         signInWithPopup(auth, provider)
             .then((result) => {
                 swal("Welcome!", "Log In successfully!", "success");
+                navigate(location?.state ? location.state : '/');
                 const userInfo = {
                     name: result?.user?.displayName,
                     email: result?.user?.email,
@@ -40,7 +41,8 @@ const Login = () => {
                           showConfirmButton: false,
                           timer: 1500
                         });
-                        navigate(location?.state ? location.state : '/');
+                       
+                        
                       }
                     });
             })

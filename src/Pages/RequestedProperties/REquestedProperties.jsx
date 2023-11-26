@@ -1,19 +1,24 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Firebase/AuthProvider';
 import useOffered from '../../Hooks/useOffered';
 import RequestedItem from './RequestedItem';
 
 
 const RequestedProperties = () => {
+  const [offer, setOffer] = useState([]);
   const { user } = useContext(AuthContext);
-  const [offered, refetch] = useOffered();
-  const offeredData = offered?.filter((item) => item?.agentEmail === user?.email);
+  const [offered] = useOffered();
+  useEffect(() => {
+    const offeredData = offered?.filter((item) => item?.agentEmail === user?.email);
+    setOffer(offeredData);
+  }, [offered, user]);
+
 
   return (
     <div>
       <h2 className="text-2xl">Property Bought Page</h2>
       {
-        offeredData?.length !== 0 ?
+        offer?.length !== 0 ?
           <div className="overflow-x-auto my-5 md:my-10 lg:my-15">
             <table className="table">
               {/* head */}
@@ -33,9 +38,12 @@ const RequestedProperties = () => {
               <tbody>
 
                 {
-                  offeredData?.map((Item) => <RequestedItem 
-                  key={Item._id}
-                  Item={Item}></RequestedItem>)
+                  offer?.map((Item) => <RequestedItem
+                    key={Item._id}
+                    Item={Item}
+                    setOffer={setOffer}
+                    offer={offer}
+                    ></RequestedItem>)
                 }
               </tbody>
             </table>

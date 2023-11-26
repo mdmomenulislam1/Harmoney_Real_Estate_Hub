@@ -1,17 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import useAxiosSecure from '../../Hooks/UseAxiosSecure';
 
 const WishedItem = ({ item }) => {
   const { data: wishedProperty = [], refetch } = useQuery({
     queryKey: ['wishedProperty'],
     queryFn: async () => {
-        const res = await axiosSecure.get('/wishedProperty');
-        return res.data;
+      const res = await axiosSecure.get('/wishedProperty');
+      return res.data;
     }
-})
+  })
   const axiosSecure = useAxiosSecure();
   const { _id, property_image, property_title, agent_name, agent_image, property_location, price_range, verification_status } = item;
 

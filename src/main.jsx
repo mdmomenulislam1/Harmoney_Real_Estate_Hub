@@ -37,6 +37,8 @@ import AddProperty from './Pages/AddProperty/AddProperty.jsx';
 import Offered from './Pages/WishlistPage/Offered.jsx';
 import Payment from './Pages/PropertyBought/Payment.jsx';
 import UpdatedProperty from './Pages/MyAddedPage/UpdatedProperty.jsx';
+import AgentRoute from './Firebase/AgentRoute.jsx';
+import AdminRoute from './Firebase/AdminRoute.jsx';
 
 const queryClient = new QueryClient();
 
@@ -54,58 +56,6 @@ const router = createBrowserRouter([
         path: "/allProperties",
         element: <PrivateRoute> <AllProperties></AllProperties> </PrivateRoute>
       },
-      // {
-      //   path: "/dashboard",
-      //   element: <PrivateRoute> <Dashboard></Dashboard> </PrivateRoute>
-      // },
-      // {
-      //   path: "/dashboard/myProfile",
-      //   element: <PrivateRoute> <MyProfile></MyProfile> </PrivateRoute>
-      // },
-      // {
-      //   path: "/dashboard/wishlist",
-      //   element: <PrivateRoute> <Wishlist></Wishlist> </PrivateRoute>
-      // },
-      // {
-      //   path: "/dashboard/propertyBought",
-      //   element: <PrivateRoute> <PropertyBought></PropertyBought> </PrivateRoute>
-      // },
-      // {
-      //   path: "/dashboard/myReviews",
-      //   element: <PrivateRoute> <MyReviews></MyReviews> </PrivateRoute>
-      // },
-      // {
-      //   path: "/dashboard/agentProfile",
-      //   element: <PrivateRoute> <AgentProfile></AgentProfile> </PrivateRoute>
-      // },
-      // {
-      //   path: "/dashboard/mySoldProperties",
-      //   element: <PrivateRoute> <MyAddedProperties></MyAddedProperties> </PrivateRoute>
-      // },
-      // {
-      //   path: "/dashboard/requestedProperties",
-      //   element: <PrivateRoute> <REquestedProperties></REquestedProperties> </PrivateRoute>
-      // },
-      // {
-      //   path: "/dashboard/myAddedProperties",
-      //   element: <PrivateRoute> <MySoldProperties></MySoldProperties> </PrivateRoute>
-      // },
-      // {
-      //   path: "/dashboard/adminProfile",
-      //   element: <PrivateRoute> <AdminProfile></AdminProfile> </PrivateRoute>
-      // },
-      // {
-      //   path: "/dashboard/manageProperties",
-      //   element: <PrivateRoute> <ManageProperties></ManageProperties> </PrivateRoute>
-      // },
-      // {
-      //   path: "/dashboard/manageUsers",
-      //   element: <PrivateRoute> <ManageUsers></ManageUsers></PrivateRoute>
-      // },
-      // {
-      //   path: "/dashboard/manageReviews",
-      //   element: <PrivateRoute> <ManageReviews></ManageReviews> </PrivateRoute>
-      // },
       {
         path: "/login",
         element: <Login></Login>
@@ -158,47 +108,47 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/agentProfile",
-        element: <PrivateRoute> <AgentProfile></AgentProfile> </PrivateRoute>
+        element: <AgentRoute>  <AgentProfile></AgentProfile> </AgentRoute>
       },
       {
         path: "/dashboard/addProperty",
-        element: <PrivateRoute> <AddProperty></AddProperty> </PrivateRoute>
+        element: <AgentRoute>  <AddProperty></AddProperty> </AgentRoute>
       },
       {
         path: "/dashboard/mySoldProperties",
-        element: <PrivateRoute> <MySoldProperties></MySoldProperties> </PrivateRoute>
+        element: <AgentRoute>  <MySoldProperties></MySoldProperties> </AgentRoute>
       },
       {
         path: "/dashboard/requestedProperties",
-        element: <PrivateRoute> <REquestedProperties></REquestedProperties> </PrivateRoute>
+        element: <AgentRoute>  <REquestedProperties></REquestedProperties> </AgentRoute>
       },
       {
         path: "/dashboard/myAddedProperties",
-        element: <PrivateRoute>  <MyAddedProperties></MyAddedProperties>  </PrivateRoute>
+        element: <AgentRoute>   <MyAddedProperties></MyAddedProperties>  </AgentRoute>
       },
 
       {
         path: "/dashboard/update/:_id",
-        element: <PrivateRoute><UpdatedProperty></UpdatedProperty></PrivateRoute>,
+        element: <AgentRoute> <UpdatedProperty></UpdatedProperty></AgentRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/property/${params._id}`)
       },
 
 
       {
         path: "/dashboard/adminProfile",
-        element: <PrivateRoute> <AdminProfile></AdminProfile> </PrivateRoute>
+        element: <AdminRoute> <AdminProfile></AdminProfile> </AdminRoute>
       },
       {
         path: "/dashboard/manageProperties",
-        element: <PrivateRoute> <ManageProperties></ManageProperties> </PrivateRoute>
+        element: <AdminRoute> <ManageProperties></ManageProperties> </AdminRoute>
       },
       {
         path: "/dashboard/manageUsers",
-        element: <PrivateRoute> <ManageUsers></ManageUsers></PrivateRoute>
+        element: <AdminRoute> <ManageUsers></ManageUsers></AdminRoute>
       },
       {
         path: "/dashboard/manageReviews",
-        element: <PrivateRoute> <ManageReviews></ManageReviews> </PrivateRoute>
+        element: <AdminRoute> <ManageReviews></ManageReviews> </AdminRoute>
       }
     ]
   }
