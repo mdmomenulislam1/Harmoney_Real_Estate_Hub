@@ -28,7 +28,7 @@ import MyReviews from './Pages/MyReviewsPage/MyReviews.jsx';
 import AgentProfile from './Pages/AgentProfile/AgentProfile.jsx';
 import MyAddedProperties from './Pages/MyAddedPage/MyAddedProperties.jsx';
 import MySoldProperties from './Pages/MySoldPage/MySoldProperties.jsx';
-import REquestedProperties from './Pages/RequestedProperties/REquestedProperties.jsx';
+import REquestedProperties from './Pages/RequestedProperties/RequestedProperties.jsx';
 import AdminProfile from './Pages/AdminProfile/AdminProfile.jsx';
 import ManageProperties from './Pages/ManageProperties/ManageProperties.jsx';
 import ManageUsers from './Pages/ManageUsers/ManageUsers.jsx';

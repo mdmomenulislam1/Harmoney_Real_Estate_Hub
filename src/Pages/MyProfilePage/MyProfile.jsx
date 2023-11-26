@@ -8,9 +8,6 @@ const MyProfile = () => {
   const { user } = useContext(AuthContext);
   const userData = userInfo?.filter((item) => item?.email === user?.email);
 
-  console.log(userData[0]?.name);
-  console.log(userInfo);
-
   return (
     <div className="text-center mx-10">
       <Helmet>
@@ -24,7 +21,7 @@ const MyProfile = () => {
           <p className="my-3 font-bold">Welcome</p>
           <p className="my-3 font-bold text-yellow-600">Name: {userData[0]?.name}</p>
           <p className="my-3 font-bold">Email: {userData[0]?.email}</p>
-          <p className="my-3 font-bold">{userData[0]?.rule}</p>
+          <p className="my-3 font-bold">{userData[0]?.role}</p>
         </div>
 
       </div>

@@ -7,7 +7,7 @@ const Offered = () => {
   const {user} = useContext(AuthContext);
 
   const wishedItem = useLoaderData();
-  const { property_title, property_image, agent_name, property_location, price_range } = wishedItem;
+  const { property_title, property_image, agent_name, agent_email, property_location, price_range } = wishedItem;
 
   const today = new Date();
 
@@ -24,6 +24,7 @@ const Offered = () => {
     const propertyName = form.property_name.value;
     const propertyLocation = form.property_location.value;
     const agentName = form.agent_name.value;
+    const agentEmail = form.agent_email.value;
     const buyerName = form.buyer_name.value;
     const buyerEmail = form.buyer_email.value;
     const offeredAmount = form.offered_amount.value;
@@ -31,7 +32,7 @@ const Offered = () => {
 
     
     const offeredData = {
-      propertyName, propertyLocation, property_image, agentName, buyerName, buyerEmail, offeredAmount, orderedDate, status : "Pending"
+      propertyName, propertyLocation, property_image, agentName, agentEmail, buyerName, buyerEmail, offeredAmount, orderedDate, status : "pending"
     }
     
     fetch('http://localhost:5000/offeredProperty', {
@@ -70,6 +71,11 @@ const Offered = () => {
           <div className="flex justify-center items-center w-full">
             <p className=" text-slate-600 font-bold w-[200px]">Agent Name</p>
             <input type="text" name="agent_name" id="" defaultValue={agent_name} disabled className="m-3 w-3/4 p-3 text-slate-600 font-semibold border border-slate-600 rounded-lg" />
+          </div>
+
+          <div className="flex justify-center items-center w-full">
+            <p className=" text-slate-600 font-bold w-[200px]">Agent Email</p>
+            <input type="text" name="agent_email" id="" defaultValue={agent_email} disabled className="m-3 w-3/4 p-3 text-slate-600 font-semibold border border-slate-600 rounded-lg" />
           </div>
 
           <div className="flex justify-center items-center w-full">

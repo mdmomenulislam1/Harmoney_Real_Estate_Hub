@@ -15,7 +15,7 @@ import { FaQuoteRight } from "react-icons/fa";
 
 const DetailsPage = () => {
   const property = useLoaderData();
-  const { _id, property_image, property_title, agent_name, agent_image, property_description, property_location, price_range, verification_status } = property;
+  const { _id, property_image, property_title, agent_name, agent_image, property_description, agent_email, property_location, price_range, verification_status } = property;
 
   const { user } = useContext(AuthContext);
 
@@ -32,7 +32,7 @@ const DetailsPage = () => {
 
   const handleWishlist = () => {
     const wishedPropertyData = {
-      property_image, property_title, property_location, agent_name, agent_image, verification_status, price_range, buyer_name: user?.displayName, buyer_email: user?.email
+      property_image, property_title, property_location, agent_name, agent_image, agent_email, verification_status, price_range, buyer_name: user?.displayName, buyer_email: user?.email
     }
 
     fetch('http://localhost:5000/wishedProperty', {

@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import useAxiosPublic from "./useAxiousPublic";
 import { useQuery } from "@tanstack/react-query";
 
@@ -8,7 +7,7 @@ const useUsers = () => {
    
 
     const { data: userInfo = [], isPending: loading, refetch } = useQuery({
-      queryKey: ['user'],
+      queryKey: ['userInfo'],
       queryFn: async () => {
         const res = await axiosPublic.get('/user');
         return res.data;

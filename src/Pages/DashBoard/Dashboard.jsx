@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { AuthContext } from '../../Firebase/AuthProvider';
+import useUsers from '../../Hooks/useUsers';
 
 const Dashboard = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -10,6 +11,10 @@ const Dashboard = () => {
       .then()
       .catch()
   }
+
+  const [userInfo] = useUsers({});
+  const userData = userInfo?.filter((item) => item?.email === user?.email);
+  console.log(userData[0]);
 
 
   return (

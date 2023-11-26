@@ -11,12 +11,14 @@ const PropertyBought = () => {
   return (
     <div>
       <h2 className="text-2xl">Property Bought Page</h2>
+      <div className="grid md:grid-cols-2 gap-5">
       {
         offeredData?.map(item => <BoughtItem
           key={item._id}
           item={item}
         ></BoughtItem>)
       }
+      </div>
     </div>
   );
 };
