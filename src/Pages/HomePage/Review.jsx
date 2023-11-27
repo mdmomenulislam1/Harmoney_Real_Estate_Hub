@@ -13,7 +13,10 @@ const Review = () => {
   useEffect(() => {
     fetch('http://localhost:5000/review')
       .then(res => res.json())
-      .then(data => setReviews(data))
+      .then(data => {
+        const latest = data.slice().sort((a, b ) => b?._id - a?._id);
+        setReviews(latest)
+      })
   }, [])
 
   return (
@@ -25,16 +28,16 @@ const Review = () => {
           reviews?.map(review => <SwiperSlide key={review._id}>
 
             <div className=' mx-28 text-center'>
-              <h3 className='text-3xl font-bold text-yellow-500 my-2'>
+              <h3 className='text-3xl font-bold text-pink-800 my-2'>
                 {review?.property_title
                 }
               </h3>
-              <Rating className='mx-auto my-2' style={{ maxWidth: 250 }} value={review?.rating} />
+              <Rating className='mx-auto my-2' style={{ maxWidth: 250 }} value={parseInt(review?.rating)} />
               <FaQuoteRight className=' text-8xl mx-auto my-5' />
               <p className=" font-semibold">{review?.review}</p>
               <div className='flex justify-center items-center gap-5 my-5'>
               <img className="w-20 h-20 rounded-full" src={review?.reviewer_image} alt="" />
-              <h3 className='text-4xl font-bold text-yellow-500 my-2'>
+              <h3 className='text-4xl font-bold text-pink-800 my-2'>
                 {review?.reviewer_name
                 }
               </h3>

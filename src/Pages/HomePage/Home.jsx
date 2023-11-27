@@ -7,19 +7,15 @@ import FAQS from './FAQS';
 
 const Home = () => {
   return (
-    <div>
+    <div className="mx-4 md:mx-8 lg:mx-12">
       <Banner></Banner>
-      <h1 className=" p-5 mx-10 text-4xl font-bold border-l-8 text-yellow-600 rounded-2xl border-yellow-600 mt-4 md:mt-8 lg:mt-12 ">
-        Hot Properties</h1>
+      <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold"> Hot Property</h2>
       <Advertisement></Advertisement>
-      <h1 className=" p-5 mx-10 text-4xl text-right font-bold border-r-8 text-yellow-600 rounded-2xl border-yellow-600 mt-4 md:mt-8 lg:mt-12 ">
-        Property Gallery</h1>
+      <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">Property Gallery</h2>
       <Promo></Promo>
-      <h1 className=" p-5 mx-10 text-4xl font-bold border-l-8 text-yellow-600 rounded-2xl border-yellow-600 mt-4 md:mt-8 lg:mt-12 ">
-        Latest Review</h1>
+      <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">Latest Review</h2>
       <Review></Review>
-      <h1 className=" p-5 mx-10 text-4xl text-right font-bold border-r-8 text-yellow-600 rounded-2xl border-yellow-600 mt-4 md:mt-8 lg:mt-12 ">
-        Frequently Asked Questions</h1>
+      <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">Frequently Asked Questions</h2>
       <FAQS></FAQS>
     </div>
   );

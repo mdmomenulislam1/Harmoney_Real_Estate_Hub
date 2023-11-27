@@ -4,29 +4,31 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"
 
 const Banner = () => {
   return (
-    <Carousel className='text-center'>
-      <div>
-        <img src="https://i.ibb.co/nL1Syrs/green-real-estate-facebook-post-design-template-24176354c260f45e3cc3b41f3498936d-screen.jpg" />
+    <div className="">
+      <Carousel className="text-center ">
+      <div className="h-[400px]">
+        <img className="rounded-b-xl" src="https://i.ibb.co/v4gDJj2/house-1836070-1280.jpg" />
         
       </div>
       <div>
-        <img src="https://i.ibb.co/wgP616J/OIP.jpg" />
+        <img className="rounded-b-xl" src="https://i.ibb.co/rMfryJq/large-home-389271-640.jpg" />
         
       </div>
       <div>
-        <img src="https://i.ibb.co/6F3chDM/23.jpg" />
+        <img className="rounded-b-xl" src="https://i.ibb.co/DCGLFhL/kitchen-1543493-640.webp" />
         
       </div>
       <div>
-        <img src="https://i.ibb.co/6F3chDM/23.jpg" />
+        <img className="rounded-b-xl" src="https://i.ibb.co/HHg4r4N/residence-2219972-640.jpg" />
         
       </div>
       <div>
-        <img src="https://i.ibb.co/GdsNsZR/OIP.jpg" />
+        <img className="rounded-b-xl" src="https://i.ibb.co/qRXCQy3/home-5835289-640.jpg" />
         
       </div>
       
     </Carousel>
+    </div>
   );
 };
 

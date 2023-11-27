@@ -21,29 +21,29 @@ const Promo = () => {
         modules={[Pagination]}
 
       >
-        <SwiperSlide>
-          <img className="w-84 h-full" src="https://i.ibb.co/wp11rQh/OIP.jpg" alt="" />
+        <SwiperSlide className="pb-16">
+          <img className="w-84 h-[400px]" src="https://i.ibb.co/HYhVQn2/interior-design-3564955-640.jpg" alt="" />
         </SwiperSlide>
-        <SwiperSlide>
-          <img className="w-84 h-full" src="https://i.ibb.co/mtCZZk3/OIP.jpg" alt="" />
+        <SwiperSlide className="pb-16">
+          <img className="w-84 h-[400px]" src="https://i.ibb.co/cLh9CsK/floor-2228277-640.jpg" alt="" />
         </SwiperSlide>
-        <SwiperSlide>
-          <img className="w-84 h-full" src="https://i.ibb.co/cTkM12h/OIP.jpg" alt="" />
+        <SwiperSlide className="pb-16">
+          <img className="w-84 h-[400px]" src="https://i.ibb.co/FgPD9X5/interior-3778708-640.jpg" alt="" />
         </SwiperSlide>
-        <SwiperSlide>
-          <img className="w-84 h-full" src="https://i.ibb.co/mtCZZk3/OIP.jpg" alt="" />
+        <SwiperSlide className="pb-16">
+          <img className="w-84 h-[400px]" src="https://i.ibb.co/F3YFmSR/bedroom-1940169-640.jpg" alt="" />
         </SwiperSlide>
-        <SwiperSlide>
-          <img className="w-84 h-full" src="https://i.ibb.co/wp11rQh/OIP.jpg" alt="" />
+        <SwiperSlide className="pb-16">
+          <img className="w-84 h-[400px]" src="https://i.ibb.co/z7rgKNC/kitchen-1940175-640.jpg" alt="" />
         </SwiperSlide>
-        <SwiperSlide>
-          <img className="w-84 h-full" src="https://i.ibb.co/mtCZZk3/OIP.jpg" alt="" />
+        <SwiperSlide className="pb-16">
+          <img className="w-84 h-[400px]" src="https://i.ibb.co/ZMz03y4/living-room-3539587-640.jpg" alt="" />
         </SwiperSlide>
-        <SwiperSlide>
-          <img className="w-84 h-full" src="https://i.ibb.co/cTkM12h/OIP.jpg" alt="" />
+        <SwiperSlide className="pb-16">
+          <img className="w-84 h-[400px]" src="https://i.ibb.co/gd1tGVh/bedroom-3778695-640.jpg" alt="" />
         </SwiperSlide>
-        <SwiperSlide>
-          <img className="w-84 h-full" src="https://i.ibb.co/mtCZZk3/OIP.jpg" alt="" />
+        <SwiperSlide className="pb-16">
+          <img className="w-84 h-[400px]" src="https://i.ibb.co/d5sG4gM/staging-2816464-640.jpg" alt="" />
         </SwiperSlide>
 
       </Swiper>

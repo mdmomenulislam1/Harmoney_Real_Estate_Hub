@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <div>
       <footer className="flex justify-around items-center p-10 bg-pink-800 text-white">
-        <aside className="flex justify-center items-center flex items-center gap-2">
+        <aside className="flex justify-center items-center gap-2">
           <img className=" h-[150px]" src="https://i.ibb.co/yQDKcwT/image-removebg-preview.png" alt="" />
           <h2 className="text-2xl font-bold text-white">Harmony Real Estate Hub</h2>
 
