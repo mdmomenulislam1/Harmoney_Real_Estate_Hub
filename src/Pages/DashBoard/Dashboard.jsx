@@ -9,10 +9,10 @@ import { TbUsersGroup } from "react-icons/tb";
 import { FiHome } from "react-icons/fi";
 import { LuClipboardList } from "react-icons/lu";
 import { AiTwotoneAppstore } from "react-icons/ai";
-
 import { CiLogout } from "react-icons/ci";
 import { FaRegWindowRestore } from "react-icons/fa";
 import { CiSquareQuestion } from "react-icons/ci";
+import { FcAdvertising } from "react-icons/fc";
 
 
 const Dashboard = () => {
@@ -68,6 +68,7 @@ const Dashboard = () => {
                 <li> <NavLink to="/dashboard/manageProperties" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <MdOutlineAddHomeWork className=" text-2xl" /> Manage Properties</NavLink></li>
                 <li> <NavLink to="/dashboard/manageUsers" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <TbUsersGroup className=" text-2xl"/> Manage Users</NavLink></li>
                 <li> <NavLink to="/dashboard/manageReviews" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <MdOutlineRateReview className=" text-2xl" /> Manage Reviews</NavLink></li>
+                <li> <NavLink to="/dashboard/advertiseProperty" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <FcAdvertising className=" text-2xl" /> Advertise Property</NavLink></li>
               </> : <>
               </>
             }

@@ -1,11 +1,21 @@
 import { Link } from "react-router-dom";
-import useProperty from "../../Hooks/useProperties";
+// import useProperty from "../../Hooks/useProperties";
 import PropertyItem from "../../SharedElement/PropertyItem";
-
+import useAxiosSecure from "../../Hooks/UseAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 const Advertisement = () => {
-    const [property] = useProperty();
-    const propertyData = property.filter((item) => item?.verification_status === "Verified")
+    const axiosSecure = useAxiosSecure();
+    const { data: advertise = [], refetch } = useQuery({
+        queryKey: ['advertise'],
+        queryFn: async () => {
+            const res = await axiosSecure.get('/advertiseProperty');
+            return res.data;
+        }
+    });
+
+    const propertyData = advertise.filter((item) => item?.advertise_status === "Advertised")
+
 
     return (
         <div className="mx-10 my-10">

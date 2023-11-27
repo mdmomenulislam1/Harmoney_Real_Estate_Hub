@@ -39,6 +39,7 @@ import Payment from './Pages/PropertyBought/Payment.jsx';
 import UpdatedProperty from './Pages/MyAddedPage/UpdatedProperty.jsx';
 import AgentRoute from './Firebase/AgentRoute.jsx';
 import AdminRoute from './Firebase/AdminRoute.jsx';
+import AdvertiseProperty from './Pages/AdvertisePage/AdvertiseProperty.jsx';
 
 const queryClient = new QueryClient();
 
@@ -132,8 +133,6 @@ const router = createBrowserRouter([
         element: <AgentRoute> <UpdatedProperty></UpdatedProperty></AgentRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/property/${params._id}`)
       },
-
-
       {
         path: "/dashboard/adminProfile",
         element: <AdminRoute> <AdminProfile></AdminProfile> </AdminRoute>
@@ -149,6 +148,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/manageReviews",
         element: <AdminRoute> <ManageReviews></ManageReviews> </AdminRoute>
+      },
+      {
+        path: "/dashboard/advertiseProperty",
+        element: <AdminRoute> <AdvertiseProperty></AdvertiseProperty> </AdminRoute>
       }
     ]
   }

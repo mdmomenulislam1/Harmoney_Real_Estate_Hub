@@ -34,6 +34,35 @@ const ManageItem = ({ Item, index }) => {
 
         }
       });
+
+    const advertiseData = {
+      property_title,
+      property_image,
+      property_location,
+      agent_name,
+      agent_email,
+      agent_image,
+      price_range,
+      verification_status: "Verified",
+      property_description,
+      advertise_status : " "
+    }
+    fetch("http://localhost:5000/advertiseProperty", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(advertiseData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+
+          swal("Okay, Done!", " Data added to the Advertisement section!", "success");
+
+        }
+      });
   };
 
   const handleReject = () => {
@@ -63,6 +92,8 @@ const ManageItem = ({ Item, index }) => {
           swal("Okay, Done!", "Request Rejected!", "success");
         }
       });
+
+
   }
 
   return (
@@ -74,23 +105,23 @@ const ManageItem = ({ Item, index }) => {
       <td className="border-2 border-pink-800 text-pink-800 ">{agent_email}</td>
       <td className="border-2 border-pink-800 text-pink-800 ">{agent_name}</td>
       <td className="border-2 border-pink-800 text-pink-800 ">{price_range}</td>
-      
-      <td className="border-2 border-pink-800 text-pink-800 ">
-        {(verification_status !== "Pending") ?<span className="font-bold text-blue-600">{verification_status}</span>: 
-        
-        <>
-        <div className="font-bold text-red-600">
-        {verification_status}
-        </div>
-        
-        <div className="text-center flex gap-2">
-        <button onClick={handleVerify} className="rounded-lg bg-blue-600 text-white font-bold p-2 text-2xl"> <IoMdCheckmark />  </button>
-        <button onClick={handleReject} className="rounded-lg bg-red-600 p-2 text-white font-extrabold text-2xl"><FaXmark /> </button>
-        </div> </>
 
-}
+      <td className="border-2 border-pink-800 text-pink-800 ">
+        {(verification_status !== "Pending") ? <span className="font-bold text-blue-600">{verification_status}</span> :
+
+          <>
+            <div className="font-bold text-red-600">
+              {verification_status}
+            </div>
+
+            <div className="text-center flex gap-2">
+              <button onClick={handleVerify} className="rounded-lg bg-blue-600 text-white font-bold p-2 text-2xl"> <IoMdCheckmark />  </button>
+              <button onClick={handleReject} className="rounded-lg bg-red-600 p-2 text-white font-extrabold text-2xl"><FaXmark /> </button>
+            </div> </>
+
+        }
       </td>
-      
+
 
     </tr>
   );
