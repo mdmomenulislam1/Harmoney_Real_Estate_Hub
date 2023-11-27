@@ -49,39 +49,12 @@ const MyReviews = () => {
         }
     });
 }
-  // const handleDeleteReview = (review) => {
-  //   Swal.fire({
-  //     title: "Are you sure?",
-  //     text: "You won't be able to revert this!",
-  //     icon: "warning",
-  //     showCancelButton: true,
-  //     confirmButtonColor: "#3085d6",
-  //     cancelButtonColor: "#d33",
-  //     confirmButtonText: "Yes, delete it!"
-  //   }).then(async (result) => {
-  //     if (result.isConfirmed) {
-  //       const res = await axiosSecure.delete(`/review/${_id}`);
-  //       // console.log(res.data);
-  //       if (res.data.deletedCount > 0) {
-  //         // refetch to update the ui
-  //         refetch();
-  //         Swal.fire({
-  //           position: "top-end",
-  //           icon: "success",
-  //           title: `${item.name} has been deleted`,
-  //           showConfirmButton: false,
-  //           timer: 1500
-  //         });
-  //       }
-
-
-  //     }
-  //   });
-  // }
   return (
-    <div>
-      <h2 className="text-2xl">My Reviews Page</h2>
-      <div
+    <div className="my-5">
+      <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">My Reviews Page</h2>
+     
+      {
+        reviewData.length !== 0 ? <div
         className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
         {
           reviewData?.map(item => <div key={item._id}>
@@ -105,7 +78,11 @@ const MyReviews = () => {
           </div>)
         }
 
-      </div>
+      </div>:
+      <div>
+      <img className="rounded-xl h-full w-full" src="https://i.ibb.co/G2kW8nQ/image.png" alt="" />
+    </div>
+      }
     </div>
   );
 };

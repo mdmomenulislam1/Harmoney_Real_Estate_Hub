@@ -113,7 +113,7 @@ const AddProperty = () => {
 
           <div className="flex justify-center items-center w-full">
             <p className=" text-black font-bold w-[200px]">Property Photo URL</p>
-            <input type="file" name="property_image" id="" placeholder="Property Photo URL" required className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
+            <input type="text" name="property_image" id="" placeholder="Property Photo URL" required className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
           </div>
 
           <div className="flex justify-center items-center w-full">
