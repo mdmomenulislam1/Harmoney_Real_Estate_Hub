@@ -86,8 +86,7 @@ const Registration = () => {
                 navigate(location?.state ? location.state : '/');
               }
             });
-          // console.log(result.user)
-          // swal("Congratulations!", "Created successfully!", "success");
+         
 
 
         });
@@ -104,38 +103,38 @@ const Registration = () => {
       {
         user ? <div className="text-center">
           <Helmet>
-            <title>{'Corner Cafe | My Profile'}</title>
+            <title>{'Corner Cafe || My Profile'}</title>
           </Helmet>
-          <h1 className="text-center p-5 text-4xl font-bold border-b-8 border-r-8 text-yellow-600 rounded-2xl border-yellow-600 mt-8 md:mt-12 lg:mt-16 ">My Profile Page</h1>
+          <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">My Information</h2>
 
           <img src={user?.photoURL} alt="" className="rounded-lg mx-auto my-3" />
           <p className="my-3 font-bold">Welcome</p>
-          <p className="my-3 font-bold text-yellow-600">Name: {user?.displayName}</p>
+          <p className="my-3 font-bold text-pink-800">Name: {user?.displayName}</p>
           <p className="my-3 font-bold">Email: {user?.email}</p>
         </div> :
           <div className="">
             <Helmet>
-              <title>{'Corner Cafe | Registration'}</title>
+              <title>{'Corner Cafe || Registration'}</title>
             </Helmet>
-            <h1 className="text-center p-5 text-4xl font-bold border-b-8 border-r-8 text-yellow-600 rounded-2xl border-yellow-600 mt-8 md:mt-12 lg:mt-16 ">Please Registration</h1>
-            <form onSubmit={handleRegister} className="border-l-8 rounded-lg mt-5 border-yellow-600 p-5">
+            <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">Registration Page</h2>
+            <form onSubmit={handleRegister} className="border-x-4 rounded-t-lg border-pink-800 p-5">
               <div className="form-control mb-3">
                 <label className="label">
                   <span className="label-text text-black text-2xl font-bold">Name</span>
                 </label>
-                <input type="name" name="name" placeholder="Name" className="input input-bordered border-yellow-600 text-black" required />
+                <input type="name" name="name" placeholder="Name" className="input input-bordered border-pink-800 text-black" required />
               </div>
               <div className="form-control mb-3">
                 <label className="label">
                   <span className="label-text text-black text-2xl font-bold">Photo URL</span>
                 </label>
-                <input type="text" name="photoURL" placeholder="Enter your photoURL" className="input input-bordered border-yellow-600 text-black" required />
+                <input type="text" name="photoURL" placeholder="Enter your photoURL" className="input input-bordered border-pink-800 text-black" required />
               </div>
               <div className="form-control mb-3">
                 <label className="label">
                   <span className="label-text text-black text-2xl font-bold">Email</span>
                 </label>
-                <input type="email" name="email" placeholder="Email" className="input input-bordered border-yellow-600 text-black" required />
+                <input type="email" name="email" placeholder="Email" className="input input-bordered border-pink-800 text-black" required />
               </div>
               <div className="form-control relative mb-3">
                 <label className="label">
@@ -145,25 +144,25 @@ const Registration = () => {
                   type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder="Password"
-                  className="input input-bordered border-yellow-600 text-black" required />
+                  className="input input-bordered border-pink-800 text-black" required />
                 <span className="absolute text-4xl right-2 bottom-2" onClick={() => setShowPassword(!showPassword)}>
                   {
                     showPassword ? <BsEye></BsEye> : <BsEyeSlash></BsEyeSlash>
                   }
                 </span>
               </div>
-              <input type="checkbox" name="terms" id="terms" required /> Accept terms and conditions
+              <input type="checkbox" name="terms" id="terms" required  /> Accept terms and conditions
               <div className="form-control mt-6">
-                <button className="bg-yellow-600 font-bold text-center hover:bg-yellow-800 text-white p-3 rounded-lg">Registration</button>
+                <button className="bg-pink-800 font-bold text-center hover:bg-yellow-800 text-white p-3 rounded-lg">Registration</button>
               </div>
-              <p className="flex p-2 font-semibold"> Are you old user? Please <Link to="/login" className="px-2 text-yellow-600 font-extrabold"><span> Log In</span></Link></p>
+              <p className="flex p-2 font-bold"> Are you old user? Please <Link to="/login" className="px-2 text-pink-800 font-extrabold"><span> Log In</span></Link></p>
 
             </form>
-            <h3 className="text-center text-3xl p-3 font-bold"> Or </h3>
-            <div className="flex justify-center items-center pb-5 border-r-8 rounded-lg border-yellow-600">
+            
+            <div className="flex justify-center items-center pb-5 border-x-4 rounded-b-lg border-b-4 border-pink-800">
 
               <Link onClick={handleGoogleSignIn} className=" gap-2 flex justify-center items-center">
-                <button className="text-2xl font-bold px-5 bg-yellow-600 rounded-2xl py-3 text-white"><BsGoogle className="text-white inline mx-3"></BsGoogle> Google</button>
+                <button className="text-2xl font-bold px-5 bg-pink-800 rounded-2xl py-3 text-white"><BsGoogle className="text-white inline mx-3"></BsGoogle> Google</button>
               </Link>
             </div>
           </div>

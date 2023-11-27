@@ -9,8 +9,10 @@ import { TbUsersGroup } from "react-icons/tb";
 import { FiHome } from "react-icons/fi";
 import { LuClipboardList } from "react-icons/lu";
 import { AiTwotoneAppstore } from "react-icons/ai";
-import { BsEnvelopeDash } from "react-icons/bs";
+
 import { CiLogout } from "react-icons/ci";
+import { FaRegWindowRestore } from "react-icons/fa";
+import { CiSquareQuestion } from "react-icons/ci";
 
 
 const Dashboard = () => {
@@ -51,9 +53,10 @@ const Dashboard = () => {
               (userData[0]?.role === "Agent") ? <>
                 <li> <NavLink to="/dashboard/agentProfile" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"><CgProfile className=" text-2xl"/> Agent Profile</NavLink></li>
                 <li> <NavLink to="/dashboard/AddProperty" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <MdOutlineAddHomeWork className=" text-2xl" /> Add Property</NavLink></li>
-                <li> <NavLink to="/dashboard/myAddedProperties" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black">My Added Properties</NavLink></li>
+                <li> <NavLink to="/dashboard/myAddedProperties" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <FaRegWindowRestore className="text-2xl" /> Added Properties</NavLink></li>
                 <li> <NavLink to="/dashboard/mySoldProperties" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black">My Sold Properties</NavLink></li>
-                <li> <NavLink to="/dashboard/requestedProperties" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black">Requested Property</NavLink></li>
+                <li> <NavLink to="/dashboard/requestedProperties" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black">
+                <CiSquareQuestion className="text-2xl" /> Requested Property</NavLink></li>
               </>
                 :
                 <>
@@ -71,12 +74,12 @@ const Dashboard = () => {
             <div className="divider h-2 bg-black rounded-full"></div>
             <li> <NavLink to="/" className="px-3 py-2 font-bold rounded-lg mb-2 bg-green-700 text-white hover:bg-black"> <FiHome className="text-2xl" /> Home </NavLink></li>
             <li> <NavLink to="/allProperties" className="px-3 py-2 font-bold rounded-lg mb-2 bg-green-700 text-white hover:bg-black"> <AiTwotoneAppstore className="2xl" /> All Properties</NavLink></li>
-            <button onClick={handleSignOut} className="px-3 py-2 font-bold rounded-lg mb-2 bg-green-700 text-white hover:bg-black text-left"> <CiLogout className="text-2xl" /> Log Out</button>
+            <button onClick={handleSignOut} className="px-3 py-2 font-bold rounded-lg mb-2 bg-green-700 text-white hover:bg-black text-left flex gap-3"> <CiLogout className="text-2xl" /> Log Out</button>
 
           </ul>
         </div>
         <div className="w-full mx-4 md:mx-6 lg:mx-10 my-5 md:my-8 lg:my-12 text-center">
-        <h2 className="text-4xl text-center font-bold text-pink-800"> <BsEnvelopeDash />Dashboard</h2>
+        <h2 className="text-4xl text-center font-bold text-pink-800"> Dashboard</h2>
           <Outlet></Outlet>
 
         </div>

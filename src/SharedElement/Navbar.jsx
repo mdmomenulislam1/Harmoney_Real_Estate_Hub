@@ -4,7 +4,7 @@ import { AuthContext } from "../Firebase/AuthProvider";
 import { BsEnvelopeDash } from "react-icons/bs";
 import { AiTwotoneAppstore } from "react-icons/ai";
 import { FiHome } from "react-icons/fi";
-import { CiLogout } from "react-icons/ci";
+import { CiLogin, CiLogout } from "react-icons/ci";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -34,7 +34,7 @@ const Navbar = () => {
         :
         <div>
           <Link to={"/login"} className="flex ">
-            <button className="px-5 py-1 lg:py-2 font-bold rounded-full bg-red-900 text-white">Log In</button>
+            <button className="px-3 py-2 font-bold rounded-lg mb-2 bg-green-700 text-white hover:bg-black text-left flex items-center justify-center gap-2"> <CiLogin className="text-2xl" /> Log In</button>
           </Link>
         </div>
     }
@@ -47,7 +47,7 @@ const Navbar = () => {
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-20 w-20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
           </label>
-          <ul tabIndex={0} className=" menu mx-20 menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+          <ul tabIndex={0} className=" menu mx-20 menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box px-5">
             {links}
           </ul>
         </div>

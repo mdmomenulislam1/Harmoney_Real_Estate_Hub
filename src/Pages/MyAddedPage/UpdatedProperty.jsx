@@ -49,9 +49,9 @@ const UpdatedProperty = () => {
 
   
   return (
-    <div>
-      <h2 className="text-2xl">Update Property Page</h2>
-      <form onSubmit={handleUpdateProperty} action="" method="post" className="w-full text-center">
+    <div className="my-5">
+      <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">Property Update Page</h2>
+      <form onSubmit={handleUpdateProperty} action="" method="post" className="w-full text-center border-x-4 border-b-4 rounded-lg border-blue-800">
         <div className="grid grid-cols-1 md:grid-cols-2">
           <div className="flex justify-center items-center w-full">
             <p className="text-black font-bold w-[200px]">Property Title</p>
@@ -92,7 +92,7 @@ const UpdatedProperty = () => {
 
           <br />
         </div>
-        <button className=" bg-yellow-600 hover:bg-yellow-800 m-3 w-3/4 p-3 text-white font-bold border rounded-lg" type="submit">Update Property</button>
+        <button className=" bg-blue-800 hover:bg-yellow-800 w-full p-3 text-white font-bold border rounded-lg" type="submit">Update Property</button>
       </form>
 
     </div>

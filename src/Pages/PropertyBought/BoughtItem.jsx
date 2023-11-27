@@ -17,7 +17,7 @@ const BoughtItem = ({ item }) => {
         <p className="font-medium">Status: {status}</p>
         <div className="flex gap-3">
           {
-            (status === "approved") ? 
+            (status === "Approved") ? 
             <Link to={`/dashboard/payment/${_id}`}>
             <button className="btn text-2xl font-bold btn-outline border-0 border-b-4 mt-4"> Payment Now </button>
           </Link>

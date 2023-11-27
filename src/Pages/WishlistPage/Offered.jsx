@@ -32,7 +32,7 @@ const Offered = () => {
 
     
     const offeredData = {
-      propertyName, propertyLocation, property_image, agentName, agentEmail, buyerName, buyerEmail, offeredAmount, orderedDate, status : "pending"
+      propertyName, propertyLocation, property_image, agentName, agentEmail, buyerName, buyerEmail, offeredAmount, orderedDate, status : "Pending"
     }
     
     fetch('http://localhost:5000/offeredProperty', {

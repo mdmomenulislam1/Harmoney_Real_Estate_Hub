@@ -14,7 +14,7 @@ const Review = () => {
     fetch('http://localhost:5000/review')
       .then(res => res.json())
       .then(data => {
-        const latest = data.slice().sort((a, b ) => b?._id - a?._id);
+        const latest = data.slice().sort((a, b ) => a?._id - b?._id);
         setReviews(latest)
       })
   }, [])
@@ -22,7 +22,9 @@ const Review = () => {
   return (
     <section className="my-20 max-w-screen-xl mx-auto">
 
-      <Swiper
+      {
+        reviews.length !== 0 ?
+        <Swiper
         navigation={true} modules={[Navigation]} className="my-10 mySwiper">
         {
           reviews?.map(review => <SwiperSlide key={review._id}>
@@ -48,6 +50,11 @@ const Review = () => {
         }
 
       </Swiper>
+      :
+      <div>
+          <img className="rounded-xl h-full w-full" src="https://i.ibb.co/G2kW8nQ/image.png" alt="" />
+        </div>
+      }
     </section>
   );
 };
