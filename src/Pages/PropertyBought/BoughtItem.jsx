@@ -6,15 +6,15 @@ const BoughtItem = ({ item }) => {
   return (
     <div className="rounded-lg shadow-lg">
       <img className="h-[300px] rounded-t-lg w-full" src={property_image} alt="" />
-      <div class="border-l-8 border-black rounded-b-lg p-3">
+      <div class="border-l-8 border-black text-left rounded-b-lg p-3">
         <h3 className="text-2xl font-bold">{propertyName}</h3>
         <p className="font-medium ">{propertyLocation}</p>
         <div className="flex gap-3 my-2 items-center">
           <p className="font-bold ">{agentName}</p>
 
         </div>
-        <p className="font-bold my-2">Price: {offeredAmount}</p>
-        <p className="font-medium">{status}</p>
+        <p className="font-bold my-2">Price: $ {offeredAmount}</p>
+        <p className="font-medium">Status: {status}</p>
         <div className="flex gap-3">
           {
             (status === "approved") ? 

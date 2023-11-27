@@ -9,16 +9,24 @@ const PropertyBought = () => {
   const offeredData = offered?.filter((item) => item?.buyerEmail === user?.email);
 
   return (
-    <div>
-      <h2 className="text-2xl">Property Bought Page</h2>
-      <div className="grid md:grid-cols-2 gap-5">
+    <div className="my-5">
+      <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">Property Bought Page</h2>
+
       {
-        offeredData?.map(item => <BoughtItem
-          key={item._id}
-          item={item}
-        ></BoughtItem>)
+        offeredData.length !== 0 ?
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 my-5 gap-4 md:gap-8 lg:gap-10 mx-auto">
+            {
+              offeredData?.map(item => <BoughtItem
+                key={item._id}
+                item={item}
+              ></BoughtItem>)
+            }
+          </div>
+          :
+          <div>
+            <img className="rounded-xl h-full w-full" src="https://i.ibb.co/G2kW8nQ/image.png" alt="" />
+          </div>
       }
-      </div>
     </div>
   );
 };

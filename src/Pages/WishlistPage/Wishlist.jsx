@@ -6,15 +6,17 @@ import { AuthContext } from '../../Firebase/AuthProvider';
 const Wishlist = () => {
   const {user} = useContext(AuthContext);
   const [wishedProperty, refetch] = useWishlist();
-  // console.log(wishedProperty);
   const wished = wishedProperty?.filter((item) => item?.buyer_email === user?.email);
 
 
   
   return (
-      <div className="mx-10 my-10">
-         
-          <div className="grid md:grid-cols-2 gap-10 max-w-screen-xl mx-auto">
+      <div className="my-5">
+        <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">My Wishlist Page</h2>
+     
+          {
+            wished.length !== 0 ?
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 my-5 gap-4 md:gap-8 lg:gap-10 mx-auto">
               {
                    wished?.map(item => <WishedItem
                       key={item._id}
@@ -23,12 +25,12 @@ const Wishlist = () => {
                   ></WishedItem>)
               }
           </div>
-          {/* <Link to={"/allProperties"} className="grid justify-center">
-            
-            <button className="btn btn-outline border-0 border-b-4 mt-4">View All Properties</button>
-         
+          :
+          <div>
+            <img className="rounded-xl h-full w-full" src="https://i.ibb.co/G2kW8nQ/image.png" alt="" />
+          </div>
+          }
           
-          </Link> */}
           
       </div>
   );

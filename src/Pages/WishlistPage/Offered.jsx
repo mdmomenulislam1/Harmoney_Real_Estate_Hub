@@ -53,9 +53,9 @@ const Offered = () => {
 
 
   return (
-    <div>
-      <h2 className="text-2xl">Offered Page</h2>
-      <form onSubmit={handleOfferedProperty} action="" method="post" className="w-full text-center">
+    <div className="my-5">
+      <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">Offered Page</h2>
+     <form onSubmit={handleOfferedProperty} action="" method="post" className="w-full text-center border-x-4 border-b-4 rounded-xl border-blue-800">
         <div className="grid grid-cols-1 md:grid-cols-2">
           <div className="flex justify-center items-center w-full">
             <p className=" text-slate-600 font-bold w-[200px]">Property Name</p>
@@ -100,7 +100,7 @@ const Offered = () => {
 
           <br />
         </div>
-        <button className="bg-yellow-600 m-3 w-3/4 p-3 hover:bg-slate-900 text-white font-bold border border-slate-600 rounded-lg" type="submit">Offer Now</button>
+        <button className="bg-blue-800 w-full p-3 hover:bg-slate-900 text-white font-bold border border-slate-600 rounded-b-lg" type="submit">Offer Now</button>
       </form>
 
     </div>

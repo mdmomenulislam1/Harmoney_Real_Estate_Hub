@@ -55,16 +55,16 @@ const MyReviews = () => {
      
       {
         reviewData.length !== 0 ? <div
-        className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+        className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 lg:gap-8 justify-center items-center my-5">
         {
           reviewData?.map(item => <div key={item._id}>
 
-            <div className="text-center rounded-lg p-5 shadow-lg">
-              <h3 className='text-3xl font-bold text-yellow-500 my-2'>
+            <div className="text-center rounded-t-lg border-x-2 border-t-2 border-pink-800 h-84 p-5">
+              <h3 className='text-3xl font-bold text-pink-800 my-2'>
                 {item?.property_title
                 }
               </h3>
-              <h3 className='text-4xl font-bold text-yellow-500 my-2'>
+              <h3 className='text-4xl font-bold text-pink-800 my-2'>
                 {item?.agent_name}
               </h3>
               <Rating className='mx-auto my-2' style={{ maxWidth: 250 }} value={parseInt(item?.rating)} />
@@ -72,7 +72,7 @@ const MyReviews = () => {
               <p className=" font-semibold">{item?.review}</p>
               <p className=" font-medium">{item?.review_time}</p>
             </div>
-            <button onClick={() => handleDeleteReview(item)} className="hover:bg-yellow-800 bg-yellow-600 w-full p-3 text-white font-bold border rounded-lg"> Remove the Review</button>
+            <button onClick={() => handleDeleteReview(item)} className="hover:bg-yellow-800 bg-pink-800 w-full p-3 text-white font-bold border rounded-b-lg"> Remove the Review</button>
 
 
           </div>)

@@ -7,6 +7,7 @@ import { MdOutlineRateReview } from "react-icons/md";
 import { MdOutlineAddHomeWork } from "react-icons/md";
 import { TbUsersGroup } from "react-icons/tb";
 import { FiHome } from "react-icons/fi";
+import { LuClipboardList } from "react-icons/lu";
 
 const Dashboard = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -33,7 +34,7 @@ const Dashboard = () => {
               (userData[0]?.role !== "Agent" && userData[0]?.role !== "Admin")
                 ? <>
                   <li> <NavLink to="/dashboard/myProfile" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <CgProfile className=" text-2xl"/> My Profile </NavLink></li>
-                  <li> <NavLink to="/dashboard/wishlist" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black">Wishlist</NavLink></li>
+                  <li> <NavLink to="/dashboard/wishlist" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <LuClipboardList className=" text-2xl" /> Wishlist</NavLink></li>
                   <li> <NavLink to="/dashboard/propertyBought" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <MdOutlineAddHomeWork className=" text-2xl" /> Property Bought</NavLink></li>
                   <li> <NavLink to="/dashboard/myReviews" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <MdOutlineRateReview className=" text-2xl" /> My Reviews</NavLink></li>
                 </>
