@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FcApproval } from "react-icons/fc";
+import { MdBlock } from "react-icons/md";
+import { MdPending } from "react-icons/md";
 
 const BoughtItem = ({ item }) => {
   const { _id, propertyName, propertyLocation, property_image, agentName, buyerName, buyerEmail, offeredAmount, orderedDate, status } = item;
@@ -14,17 +17,40 @@ const BoughtItem = ({ item }) => {
 
         </div>
         <p className="font-bold my-2">Price: $ {offeredAmount}</p>
-        <p className="font-medium">Status: {status}</p>
+
+        <p className="font-bold">
+          {
+            (status === "Approved") ?
+              <div className="text-2xl text-blue-600 flex items-center gap-2">Status: {status} <FcApproval className=""/>  </div> : <div>
+              </div>
+          }
+          {
+            (status === "Rejected") ?
+              <div className="text-2xl text-red-600 flex items-center gap-2">Status: {status} <MdBlock className="bg-red-600 text-white rounded-lg"/> </div> : <div>
+              </div>
+          }
+          {
+            (status === "Pending") ?
+              <div className="text-2xl text-yellow-600 flex items-center gap-2">Status: {status} <MdPending /> </div> : <div>
+              </div>
+          }
+
+        </p>
+
+        <p className="font-medium">Status: {status}
+
+
+        </p>
         <div className="flex gap-3">
           {
-            (status === "Approved") ? 
-            <Link to={`/dashboard/payment/${_id}`}>
-            <button className="btn text-2xl font-bold btn-outline border-0 border-b-4 mt-4"> Payment Now </button>
-          </Link>
-          :
-          
-            <button className="btn text-2xl font-bold btn-outline border-0 border-b-4 mt-4"> Wait for Approval </button>
-         
+            (status === "Approved") ?
+              <Link to={`/dashboard/payment/${_id}`}>
+                <button className="btn text-2xl font-bold btn-outline border-0 border-b-4 mt-4"> Payment Now </button>
+              </Link>
+              :
+
+              <button className="btn text-2xl font-bold btn-outline border-0 border-b-4 mt-4"> Wait for Approval </button>
+
           }
         </div>
       </div>

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../Hooks/UseAxiosSecure';
+import { MdVerified } from "react-icons/md";
 
 const WishedItem = ({ item }) => {
   const { data: wishedProperty = [], refetch } = useQuery({
@@ -54,7 +55,7 @@ const WishedItem = ({ item }) => {
 
         </div>
         <p className="font-bold my-2">Price Range: $ {price_range}</p>
-        <p className="font-medium">Status: {verification_status}</p>
+        <p className="font-bold flex items-center gap-2">Status: {verification_status} <MdVerified className="text-blue-800 text-2xl" /></p>
         <div className="flex gap-3">
           <Link to={`/dashboard/wishlist/${_id}`}>
             <button className="btn text-2xl font-bold btn-outline border-0 border-b-4 mt-4"> Make Offer </button>
