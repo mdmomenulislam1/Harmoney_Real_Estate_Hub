@@ -13,6 +13,7 @@ import { CiLogout } from "react-icons/ci";
 import { FaRegWindowRestore } from "react-icons/fa";
 import { CiSquareQuestion } from "react-icons/ci";
 import { FcAdvertising } from "react-icons/fc";
+import { CgShutterstock } from "react-icons/cg";
 
 
 const Dashboard = () => {
@@ -39,7 +40,7 @@ const Dashboard = () => {
             {
               (userData[0]?.role !== "Agent" && userData[0]?.role !== "Admin")
                 ? <>
-                  <li> <NavLink to="/dashboard/myProfile" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <CgProfile className=" text-2xl"/> My Profile </NavLink></li>
+                  <li> <NavLink to="/dashboard/myProfile" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <img className="rounded-full w-8 h-8" src={user?.photoURL} alt="" /> My Profile </NavLink></li>
                   <li> <NavLink to="/dashboard/wishlist" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <LuClipboardList className=" text-2xl" /> Wishlist</NavLink></li>
                   <li> <NavLink to="/dashboard/propertyBought" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <MdOutlineAddHomeWork className=" text-2xl" /> Property Bought</NavLink></li>
                   <li> <NavLink to="/dashboard/myReviews" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <MdOutlineRateReview className=" text-2xl" /> My Reviews</NavLink></li>
@@ -51,10 +52,10 @@ const Dashboard = () => {
 
             {
               (userData[0]?.role === "Agent") ? <>
-                <li> <NavLink to="/dashboard/agentProfile" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"><CgProfile className=" text-2xl"/> Agent Profile</NavLink></li>
+                <li> <NavLink to="/dashboard/agentProfile" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"><img className="rounded-full w-8 h-8" src={user?.photoURL} alt="" /> Agent Profile</NavLink></li>
                 <li> <NavLink to="/dashboard/AddProperty" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <MdOutlineAddHomeWork className=" text-2xl" /> Add Property</NavLink></li>
                 <li> <NavLink to="/dashboard/myAddedProperties" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <FaRegWindowRestore className="text-2xl" /> Added Properties</NavLink></li>
-                <li> <NavLink to="/dashboard/mySoldProperties" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black">My Sold Properties</NavLink></li>
+                <li> <NavLink to="/dashboard/mySoldProperties" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <CgShutterstock className="text-2xl"/> My Sold Properties</NavLink></li>
                 <li> <NavLink to="/dashboard/requestedProperties" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black">
                 <CiSquareQuestion className="text-2xl" /> Requested Property</NavLink></li>
               </>
@@ -64,7 +65,7 @@ const Dashboard = () => {
 
             {
               (userData[0]?.role === "Admin") ? <>
-                <li> <NavLink to="/dashboard/adminProfile" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <CgProfile className=" text-2xl"/> Admin Profile</NavLink></li>
+                <li> <NavLink to="/dashboard/adminProfile" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <img className="rounded-full w-8 h-8" src={user?.photoURL} alt="" /> Admin Profile</NavLink></li>
                 <li> <NavLink to="/dashboard/manageProperties" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <MdOutlineAddHomeWork className=" text-2xl" /> Manage Properties</NavLink></li>
                 <li> <NavLink to="/dashboard/manageUsers" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <TbUsersGroup className=" text-2xl"/> Manage Users</NavLink></li>
                 <li> <NavLink to="/dashboard/manageReviews" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <MdOutlineRateReview className=" text-2xl" /> Manage Reviews</NavLink></li>

@@ -1,12 +1,8 @@
-// import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useContext, useEffect, useState } from "react";
-// import useAxiosSecure from "../../../hooks/useAxiosSecure";
-// import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../Hooks/UseAxiosSecure";
 import { AuthContext } from "../../Firebase/AuthProvider";
-// import useCart from "../../Hooks/useCard";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 
 
@@ -18,12 +14,10 @@ const CheckoutForm = () => {
     const elements = useElements();
     const axiosSecure = useAxiosSecure();
     const { user } = useContext(AuthContext);
-    // const [cart, refetch] = useCart();
     const navigate = useNavigate();
     const cart = useLoaderData();
-    const { propertyName, propertyLocation, agentName, buyerName, agentEmail, buyerEmail, offeredAmount, orderedDate,
-        status
-    } = cart || {};
+
+    const { propertyName, propertyLocation, agentName, buyerName, agentEmail, buyerEmail, offeredAmount} = cart || {};
 
 
     const totalPrice = cart?.price;
@@ -49,7 +43,6 @@ const CheckoutForm = () => {
         if (card === null) {
             return
         }
-
         const { error, paymentMethod } = await stripe.createPaymentMethod({
             type: 'card',
             card
@@ -66,15 +59,15 @@ const CheckoutForm = () => {
 
         // confirm payment
         const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
-            // clientSecret, {
-            // payment_method: {
-            //     card: card,
-            //     billing_details: {
-            //         email: user?.email || 'anonymous',
-            //         name: user?.displayName || 'anonymous'
-            //     }
-            // }
-        // }
+            clientSecret, {
+            payment_method: {
+                card: card,
+                billing_details: {
+                    email: user?.email || 'anonymous',
+                    name: user?.displayName || 'anonymous'
+                }
+            }
+        }
         )
 
         if (confirmError) {
@@ -88,13 +81,15 @@ const CheckoutForm = () => {
 
                 // now save the payment in the database
                 const payment = {
-                    email: user.email,
-                    price: totalPrice,
+                    propertyName,
+                    propertyLocation,
+                    agentName,
+                    agentEmail,
+                    buyerEmail,
+                    buyerName,
+                    offeredAmount,
                     transactionId: paymentIntent.id,
-                    date: new Date(), // utc date convert. use moment js to 
-                    cartIds: cart.map(item => item._id),
-                    menuItemIds: cart.map(item => item.menuId),
-                    status: 'pending'
+                    date: new Date(), 
                 }
 
                 const res = await axiosSecure.post('/payments', payment);

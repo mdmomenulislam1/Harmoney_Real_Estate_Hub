@@ -71,7 +71,7 @@ const ManageUsers = () => {
       name: item.name,
       email: item.email,
       profile: item.profile,
-      role: "Admin"
+      role: "Fraud"
     }
     axiosSecure.patch(`/user/${item._id}`, fraudData )
       .then(res => {
@@ -146,18 +146,19 @@ const ManageUsers = () => {
                   <td className="border-2 border-pink-800 text-pink-800 ">{item.email}</td>
                   <td className="border-2 border-pink-800 text-center ">
                     {
-                      (item.role === "Admin"  ) ? <div className="font-bold text-blue-600">{item.role}</div> : <button onClick={() => handleAdmin(item)} className="bg-blue-600 text-white rounded-lg p-3 font-extrabold text-2xl"> <IoMdCheckmark /> </button>
+                      (item.role === "Admin" || item.role ===  "Fraud" ) ? <div className="font-bold text-blue-600">{item.role}</div> : <button onClick={() => handleAdmin(item)} className="bg-blue-600 text-white rounded-lg p-3 font-extrabold text-2xl"> <IoMdCheckmark /> </button>
                     }
                   </td>
                   <td className="border-2 border-pink-800 text-center ">
                     {
-                      ( item.role === "Agent") ? <div className="font-bold text-orange-600">{item.role}</div> : <button onClick={() => handleAgent(item)} className="bg-orange-600 text-white rounded-lg p-3 font-extrabold text-2xl"> <IoMdCheckmark /> </button>
+                      ( item.role === "Agent" ||item.role ===  "Fraud") ? <div className="font-bold text-orange-600">{item.role}</div> : <button onClick={() => handleAgent(item)} className="bg-orange-600 text-white rounded-lg p-3 font-extrabold text-2xl"> <IoMdCheckmark /> </button>
                     }
                   </td>
                   <td className="border-2 border-pink-800 text-white text-center ">
                     {
-                      (item.role === "Agent") ? <button onClick={() => handleFraud(item)} className="p-3 bg-red-600 rounded-lg font-extrabold text-2xl"> <FaBan />  </button>
-                        : <></>
+                      (item.role !== "Agent" || item.role ===  "Fraud") ? <></>
+                        : 
+                        <button onClick={() => handleFraud(item)} className="p-3 bg-red-600 rounded-lg font-extrabold text-2xl"> <FaBan />  </button>
                     }
                   </td>
             

@@ -141,7 +141,7 @@ const DetailsPage = () => {
               <div data-aos="flip-right" className="w-1/2">
                 <h2 className="text-4xl font-bold mb-4">Property Description</h2>
                 <p className="text-justify font-semibold">{property_description}</p>
-                <button onClick={handleWishlist} className="w-full bg-pink-800 text-white mx-auto text-center my-5 p-5 font-bold rounded-full">
+                <button onClick={handleWishlist} className="w-full bg-pink-800 text-white mx-auto text-center my-5 p-5 rounded-xl  text-2xl font-bold">
                   Add to Wishlist
                 </button>
 
