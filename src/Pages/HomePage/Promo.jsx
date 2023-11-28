@@ -11,7 +11,7 @@ const Promo = () => {
         slidesPerView={3}
         onSlideChange={() => console.log('slide change')}
         onSwiper={(swiper) => console.log(swiper)}
-        className='max-w-screen-xl my-10'
+        className='max-w-screen-2xl my-10'
 
         centeredSlides={true}
 
