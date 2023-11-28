@@ -10,7 +10,7 @@ const Payment = () => {
             <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">Property Payment Page</h2>
             <div>
                 <Elements stripe={stripePromise}>
-                    <CheckoutForm></CheckoutForm>
+                    <CheckoutForm/>
                 </Elements>
             </div>
         </div>

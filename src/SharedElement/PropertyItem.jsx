@@ -16,7 +16,6 @@ const PropertyItem = ({ item }) => {
           <button className="btn text-2xl font-bold btn-outline border-0 border-b-4 mt-4"> Details </button>
         </Link>
       </div>
-
     </div>
   );
 };

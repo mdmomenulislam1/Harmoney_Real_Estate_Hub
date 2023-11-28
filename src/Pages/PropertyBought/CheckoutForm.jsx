@@ -17,10 +17,10 @@ const CheckoutForm = () => {
     const navigate = useNavigate();
     const cart = useLoaderData();
 
-    const { propertyName, propertyLocation, agentName, buyerName, agentEmail, buyerEmail, offeredAmount} = cart || {};
+    const { propertyName, propertyLocation, property_image, agentName, buyerName, agentEmail, buyerEmail, offeredAmount, status} = cart || {};
 
 
-    const totalPrice = cart?.price;
+    const totalPrice = offeredAmount;
 
     useEffect(() => {
         if (totalPrice > 0) {
@@ -80,26 +80,33 @@ const CheckoutForm = () => {
                 setTransactionId(paymentIntent.id);
 
                 // now save the payment in the database
+
+
+
                 const payment = {
                     propertyName,
                     propertyLocation,
+                    property_image,
                     agentName,
                     agentEmail,
                     buyerEmail,
                     buyerName,
                     offeredAmount,
+                    status: "Bought",
+                    orderedDate,
                     transactionId: paymentIntent.id,
-                    date: new Date(), 
+                    paymentDate: new Date()
+                     
                 }
 
-                const res = await axiosSecure.post('/payments', payment);
+                const res = await axiosSecure.patch('/offeredProperty', payment);
                 console.log('payment saved', res.data);
                 refetch();
                 if (res.data?.paymentResult?.insertedId) {
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
-                        title: "Thank you for the taka paisa",
+                        title: "Thank you for payment",
                         showConfirmButton: false,
                         timer: 1500
                     });
@@ -163,9 +170,6 @@ const CheckoutForm = () => {
             />
             
           
-           
-
-
             
             <button className=" bg-blue-800 hover:bg-yellow-800 w-full p-3 text-white font-bold border rounded-b-lg" type="submit"
 

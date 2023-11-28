@@ -4,14 +4,14 @@ import swal from 'sweetalert';
 import { AuthContext } from '../../Firebase/AuthProvider';
 
 const Offered = () => {
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   const wishedItem = useLoaderData();
   const { property_title, property_image, agent_name, agent_email, property_location, price_range } = wishedItem;
 
   const today = new Date();
 
-  const [mini, maxi] = price_range.split('-');
+  const [mini, maxi] = (price_range ?? '').split('-');
   const lower = parseInt(mini, 10);
   const upper = parseInt(maxi, 10);
 
@@ -30,11 +30,11 @@ const Offered = () => {
     const offeredAmount = form.offered_amount.value;
     const orderedDate = form.ordered_date.value;
 
-    
+
     const offeredData = {
-      propertyName, propertyLocation, property_image, agentName, agentEmail, buyerName, buyerEmail, offeredAmount, orderedDate, status : "Pending"
+      propertyName, propertyLocation, property_image, agentName, agentEmail, buyerName, buyerEmail, offeredAmount, orderedDate, status: "Pending"
     }
-    
+
     fetch('http://localhost:5000/offeredProperty', {
       method: "POST",
       headers: {
@@ -55,7 +55,7 @@ const Offered = () => {
   return (
     <div className="my-5">
       <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">Offered Page</h2>
-     <form onSubmit={handleOfferedProperty} action="" method="post" className="w-full text-center border-x-4 border-b-4 rounded-xl border-blue-800">
+      <form onSubmit={handleOfferedProperty} action="" method="post" className="w-full text-center border-x-4 border-b-4 rounded-xl border-blue-800">
         <div className="grid grid-cols-1 md:grid-cols-2">
           <div className="flex justify-center items-center w-full">
             <p className=" text-slate-600 font-bold w-[200px]">Property Name</p>
@@ -90,7 +90,7 @@ const Offered = () => {
 
           <div className="flex justify-center items-center w-full">
             <p className=" text-slate-600 font-bold w-[200px]">Offered Amount($)</p>
-            <input type="number" min={lower} max={upper}  name="offered_amount" id="" required placeholder="Offered Amount" className="m-3 w-3/4 p-3 text-slate-600 font-semibold border border-slate-600 rounded-lg" />
+            <input type="number" min={lower} max={upper} name="offered_amount" id="" required placeholder="Offered Amount" className="m-3 w-3/4 p-3 text-slate-600 font-semibold border border-slate-600 rounded-lg" />
           </div>
 
           <div className="flex justify-center items-center w-full">
