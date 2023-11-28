@@ -1,12 +1,13 @@
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+// import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useContext, useEffect, useState } from "react";
 // import useAxiosSecure from "../../../hooks/useAxiosSecure";
-// import useCart from "../../../hooks/useCart";
 // import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../../Hooks/UseAxiosSecure";
 import { AuthContext } from "../../Firebase/AuthProvider";
+// import useCart from "../../Hooks/useCard";
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 
 
 const CheckoutForm = () => {
@@ -19,8 +20,13 @@ const CheckoutForm = () => {
     const { user } = useContext(AuthContext);
     // const [cart, refetch] = useCart();
     const navigate = useNavigate();
+    const cart = useLoaderData();
+    const { propertyName, propertyLocation, agentName, buyerName, agentEmail, buyerEmail, offeredAmount, orderedDate,
+        status
+    } = cart || {};
 
-    const totalPrice = cart.reduce((total, item) => total + item.price, 0)
+
+    const totalPrice = cart?.price;
 
     useEffect(() => {
         if (totalPrice > 0) {
@@ -35,13 +41,11 @@ const CheckoutForm = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
         if (!stripe || !elements) {
             return
         }
 
         const card = elements.getElement(CardElement)
-
         if (card === null) {
             return
         }
@@ -61,15 +65,17 @@ const CheckoutForm = () => {
         }
 
         // confirm payment
-        const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
-            payment_method: {
-                card: card,
-                billing_details: {
-                    email: user?.email || 'anonymous',
-                    name: user?.displayName || 'anonymous'
-                }
-            }
-        })
+        const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
+            // clientSecret, {
+            // payment_method: {
+            //     card: card,
+            //     billing_details: {
+            //         email: user?.email || 'anonymous',
+            //         name: user?.displayName || 'anonymous'
+            //     }
+            // }
+        // }
+        )
 
         if (confirmError) {
             console.log('confirm error')
@@ -102,7 +108,6 @@ const CheckoutForm = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    navigate('/dashboard/paymentHistory')
                 }
 
             }
@@ -111,8 +116,41 @@ const CheckoutForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="w-full text-center border-x-4 rounded-lg border-b-4 border-blue-800">
+           
+           <div className="flex justify-center items-center w-full">
+            <p className=" text-black font-bold w-[200px]">Property Name</p>
+            <input type="text" name="property_name" id="" required defaultValue={propertyName} disabled className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
+          </div>
+          <div className="flex justify-center items-center w-full">
+            <p className=" text-black font-bold w-[200px]">Property Location</p>
+            <input type="text" name="property_location" id="" required defaultValue={propertyLocation} disabled className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
+          </div>
+
+          <div className="flex justify-center items-center w-full">
+            <p className=" text-black font-bold w-[200px]">Property Price ($)</p>
+            <input type="text" name="property_price" id="" required defaultValue={offeredAmount} disabled className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
+          </div>
+
+          <div className="flex justify-center items-center w-full">
+            <p className=" text-black font-bold w-[200px]">Agent Name</p>
+            <input type="text" name="property_name" id="" required defaultValue={agentName} disabled className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
+          </div>
+
+          <div className="flex justify-center items-center w-full">
+            <p className=" text-black font-bold w-[200px]">Your Name</p>
+            <input type="text" name="buyer_name" id="" required defaultValue={user?.displayName} disabled className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
+          </div>
+
+          <div className="flex justify-center items-center w-full">
+            <p className=" text-black font-bold w-[200px]">Your Email</p>
+            <input type="text" name="buyer_name" id="" required defaultValue={user?.email} disabled className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
+          </div>
+
+          
+            <p className=" text-black mx-auto mt-5 text-center font-bold w-[200px]">Payment Please</p>
             <CardElement
+            className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg mx-auto"
                 options={{
                     style: {
                         base: {
@@ -128,11 +166,21 @@ const CheckoutForm = () => {
                     },
                 }}
             />
-            <button className="btn btn-sm btn-primary my-4" type="submit" disabled={!stripe || !clientSecret}>
+            
+          
+           
+
+
+            
+            <button className=" bg-blue-800 hover:bg-yellow-800 w-full p-3 text-white font-bold border rounded-b-lg" type="submit"
+
+            >
                 Pay
             </button>
-            <p className="text-red-600">{error}</p>
-            {transactionId && <p className="text-green-600"> Your transaction id: {transactionId}</p>}
+            <p className="text-red-600 my-5 font-bold">{error}</p>
+
+            {transactionId && <p className="text-green-600">
+                 Your transaction id: {transactionId}</p>}
         </form>
     );
 };

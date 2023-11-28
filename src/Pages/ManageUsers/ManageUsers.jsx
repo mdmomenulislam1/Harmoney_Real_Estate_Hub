@@ -1,7 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../Hooks/UseAxiosSecure';
-import useUsers from '../../Hooks/useUsers';
-import ManageUser from './ManageUser';
 import Swal from 'sweetalert2';
 import { IoMdCheckmark } from 'react-icons/io';
 import { FaBan, FaTrash } from 'react-icons/fa6';
