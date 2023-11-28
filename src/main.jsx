@@ -41,6 +41,7 @@ import AgentRoute from './Firebase/AgentRoute.jsx';
 import AdminRoute from './Firebase/AdminRoute.jsx';
 import AdvertiseProperty from './Pages/AdvertisePage/AdvertiseProperty.jsx';
 import AdvertisementDetails from './Pages/HomePage/AdvertisementDetails.jsx';
+import GeneralRoute from './Firebase/GeneralRoute.jsx';
 
 const queryClient = new QueryClient();
 
@@ -85,33 +86,32 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard/myProfile",
-        element: <PrivateRoute> <MyProfile></MyProfile> </PrivateRoute>
+        element:<GeneralRoute> <MyProfile></MyProfile> </GeneralRoute>
       },
       {
         path: "/dashboard/wishlist",
-        element: <PrivateRoute> <Wishlist></Wishlist> </PrivateRoute>
+        element:<GeneralRoute> <Wishlist></Wishlist> </GeneralRoute>
       },
-
 
       {
         path: "/dashboard/wishlist/:_id",
-        element: <PrivateRoute> <Offered></Offered> </PrivateRoute>,
+        element:<GeneralRoute> <Offered></Offered> </GeneralRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/wishedProperty/${params._id}`)
       },
 
       {
         path: "/dashboard/payment/:_id",
-        element: <PrivateRoute> <Payment></Payment> </PrivateRoute>,
+        element:<GeneralRoute> <Payment></Payment> </GeneralRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/offeredProperty/${params._id}`)
       },
 
       {
         path: "/dashboard/propertyBought",
-        element: <PrivateRoute> <PropertyBought></PropertyBought> </PrivateRoute>
+        element:<GeneralRoute> <PropertyBought></PropertyBought> </GeneralRoute>
       },
       {
         path: "/dashboard/myReviews",
-        element: <PrivateRoute> <MyReviews></MyReviews> </PrivateRoute>
+        element:<GeneralRoute> <MyReviews></MyReviews> </GeneralRoute>
       },
       {
         path: "/dashboard/agentProfile",
