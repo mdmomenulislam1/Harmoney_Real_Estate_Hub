@@ -14,7 +14,7 @@ import '@smastrom/react-rating/style.css'
 import { FaQuoteRight } from "react-icons/fa";
 import { MdVerified } from 'react-icons/md';
 
-const DetailsPage = () => {
+const AdvertisementDetails = () => {
   const property = useLoaderData();
   const { _id, property_image, property_title, agent_name, agent_image, property_description, agent_email, property_location, price_range, verification_status } = property;
 
@@ -240,4 +240,4 @@ const DetailsPage = () => {
   );
 };
 
-export default DetailsPage;
+export default AdvertisementDetails;

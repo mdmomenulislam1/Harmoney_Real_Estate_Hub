@@ -40,6 +40,7 @@ import UpdatedProperty from './Pages/MyAddedPage/UpdatedProperty.jsx';
 import AgentRoute from './Firebase/AgentRoute.jsx';
 import AdminRoute from './Firebase/AdminRoute.jsx';
 import AdvertiseProperty from './Pages/AdvertisePage/AdvertiseProperty.jsx';
+import AdvertisementDetails from './Pages/HomePage/AdvertisementDetails.jsx';
 
 const queryClient = new QueryClient();
 
@@ -64,6 +65,11 @@ const router = createBrowserRouter([
       {
         path: "/registration",
         element: <Registration></Registration>
+      },
+      {
+        path: "/advertiseProperty/:_id",
+        element: <PrivateRoute> <AdvertisementDetails></AdvertisementDetails> </PrivateRoute>,
+        loader: ({ params }) => fetch(`http://localhost:5000/advertiseProperty/${params._id}`)
       },
       {
         path: "/allProperties/:_id",

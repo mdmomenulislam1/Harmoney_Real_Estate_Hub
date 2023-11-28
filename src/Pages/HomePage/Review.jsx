@@ -14,8 +14,9 @@ const Review = () => {
     fetch('http://localhost:5000/review')
       .then(res => res.json())
       .then(data => {
+        const difference = data.sort((a, b) => a?.review_time - b.review_time);
         const latest = data.slice().sort((a, b ) => a?._id - b?._id);
-        setReviews(latest)
+        setReviews(difference)
       })
   }, [])
 

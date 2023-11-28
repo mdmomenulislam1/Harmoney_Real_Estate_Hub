@@ -12,7 +12,7 @@ const PropertyItem = ({ item }) => {
         <p className="font-medium ">{property_location}</p>
         <p className="font-bold my-2">Price Range: {price_range}</p>
         <p className="font-bold flex items-center gap-2">Status: {verification_status} <MdVerified className="text-blue-800 text-2xl" /></p>
-        <Link to={`/allProperties/${_id}`}>
+        <Link to={`/advertiseProperty/${_id}`}>
           <button className="btn text-2xl font-bold btn-outline border-0 border-b-4 mt-4"> Details </button>
         </Link>
       </div>

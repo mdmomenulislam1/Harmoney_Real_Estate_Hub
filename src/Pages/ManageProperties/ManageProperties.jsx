@@ -1,6 +1,4 @@
 import React from 'react';
-import useProperty from '../../Hooks/useProperties';
-import ManageItem from './ManageItem';
 import { FaXmark } from 'react-icons/fa6';
 import { IoMdCheckmark } from 'react-icons/io';
 import useAxiosSecure from '../../Hooks/UseAxiosSecure';
