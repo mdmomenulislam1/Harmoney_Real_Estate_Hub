@@ -114,7 +114,7 @@ const Registration = () => {
         </div> :
           <div className="">
             <Helmet>
-              <title>{'Corner Cafe || Registration'}</title>
+              <title>{'HRE-hub || Registration'}</title>
             </Helmet>
             <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">Registration Page</h2>
             <form onSubmit={handleRegister} className="border-x-4 rounded-t-lg border-pink-800 p-5">

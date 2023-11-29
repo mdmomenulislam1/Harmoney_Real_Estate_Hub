@@ -21,6 +21,8 @@ const DetailsPage = () => {
   const { user } = useContext(AuthContext);
 
   const [reviews, setReviews] = useState([]);
+  const [reports, setReports] = useState([]);
+
   useEffect(() => {
     fetch('http://localhost:5000/review')
       .then(res => res.json())
@@ -28,7 +30,16 @@ const DetailsPage = () => {
         const specificReview = data?.filter((item) => item.property_title === property?.property_title);
         setReviews(specificReview);
       })
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    fetch('http://localhost:5000/report')
+      .then(res => res.json())
+      .then(data => {
+        const specificReport = data?.filter((item) => item.property_title === property?.property_title);
+        setReports(specificReport);
+      })
+  }, []);
 
 
   const handleWishlist = () => {
@@ -68,8 +79,6 @@ const DetailsPage = () => {
         }
       })
   }
-
-
 
   const handleReview = (e) => {
     e.preventDefault();
@@ -125,10 +134,61 @@ const DetailsPage = () => {
   }
 
 
+  const handleReport = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const report = form.report.value;
+    const time = new Date(2023, 11, 1, 0, 0, 0);
+    const report_time = time.toISOString();
+
+    const reportData = {
+      property_title,
+      report,
+      agent_name,
+      report_time,
+      reporter_name: user?.displayName,
+      reporter_email: user?.email,
+      reporter_image: user?.photoURL,
+    }
+
+    if (user?.email === agent_email) {
+      return Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: `${property_title} is your own property`,
+        showConfirmButton: false,
+        timer: 1500
+      });
+    };
+
+
+    fetch("http://localhost:5000/report", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(reportData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.acknowledged) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Review is added successfully",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
+      });
+
+  }
+
   return (
     <div className="mx-5 md:mx-10 lg:mx-15 my-4 md:my-8 lg:my-12">
       <Helmet>
-        <title>{'Corner Cafe || Property Details'}</title>
+        <title>{'HRE-hub || Property Details'}</title>
       </Helmet>
       <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">Property Details Page</h2>
       <div className="border-2 border-b-2 rounded-2xl border-pink-800">
@@ -164,70 +224,140 @@ const DetailsPage = () => {
           </div>
 
           <div>
+            <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold max-w-lg mx-auto">Property Review</h2>
+            {
+              reviews?.length !== 0 ?
+                <section className="my-20 max-w-screen-xl mx-auto">
 
-            <section className="my-20 max-w-screen-xl mx-auto">
+                  <Swiper
+                    navigation={true} modules={[Navigation]} className="my-10 mySwiper">
+                    {
+                      reviews?.map(review => <SwiperSlide key={review._id}>
 
-              <Swiper
-                navigation={true} modules={[Navigation]} className="my-10 mySwiper">
-                {
-                  reviews?.map(review => <SwiperSlide key={review._id}>
+                        <div className=' mx-28 text-center'>
+                          <h3 className='text-3xl font-bold text-pink-800 my-2'>
+                            {review?.property_title
+                            }
+                          </h3>
+                          <Rating className='mx-auto my-2' style={{ maxWidth: 250 }} value={parseInt(review?.rating)} />
+                          <FaQuoteRight className=' text-8xl mx-auto my-5' />
+                          <p className=" font-semibold">{review?.review}</p>
+                          <div className='flex justify-center items-center gap-5 my-5'>
+                            <img className="w-20 h-20 rounded-full" src={review?.reviewer_image} alt="" />
+                            <h3 className='text-4xl font-bold text-pink-800 my-2'>
+                              {review?.reviewer_name
+                              }
+                            </h3>
+                          </div>
 
-                    <div className=' mx-28 text-center'>
-                      <h3 className='text-3xl font-bold text-pink-800 my-2'>
-                        {review?.property_title
-                        }
-                      </h3>
-                      <Rating className='mx-auto my-2' style={{ maxWidth: 250 }} value={parseInt(review?.rating)} />
-                      <FaQuoteRight className=' text-8xl mx-auto my-5' />
-                      <p className=" font-semibold">{review?.review}</p>
-                      <div className='flex justify-center items-center gap-5 my-5'>
-                        <img className="w-20 h-20 rounded-full" src={review?.reviewer_image} alt="" />
-                        <h3 className='text-4xl font-bold text-pink-800 my-2'>
-                          {review?.reviewer_name
-                          }
-                        </h3>
-                      </div>
-
-                    </div>
-                  </SwiperSlide>)
-                }
-
-              </Swiper>
-
-              <div className="grid justify-center items-center">
-
-
-                <a href="#my_modal_8" className="rounded-xl bg-pink-800 text-white text-2xl font-bold p-5">Write a review</a>
-
-                <div className="modal" role="dialog" id="my_modal_8">
-                  <div className="modal-box">
-                    <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">Leave a review</h2>
-                    <form onSubmit={handleReview} action="" method="post" className="border-2 rounded-2xl border-pink-800 p-5 w-full">
-                      <div className="grid grid-cols-1">
-
-                        <div className="flex justify-center items-center w-full">
-                          <p className=" text-black font-bold w-[200px]">Rating</p>
-                          <input type="number" min={1} max={5} name="rating" id="" required placeholder="Property Rating" className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
                         </div>
-                        <div className="flex justify-center items-center w-full">
-                          <p className=" text-black font-bold w-[200px]">Review</p>
-                          <textarea type="text" name="review" id="" required placeholder="Your Review ...........!" className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
-                        </div>
-                        <br />
+                      </SwiperSlide>)
+                    }
+
+                  </Swiper>
+
+
+
+                </section>
+                :
+                <>
+                </>
+            }
+
+
+            <div className="grid justify-center items-center mb-5">
+
+
+              <a href="#my_modal_8" className="rounded-xl bg-pink-800 text-white text-2xl font-bold p-5">Write a review</a>
+
+              <div className="modal" role="dialog" id="my_modal_8">
+                <div className="modal-box">
+                  <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">Leave a review</h2>
+                  <form onSubmit={handleReview} action="" method="post" className="border-2 rounded-2xl border-pink-800 p-5 w-full">
+                    <div className="grid grid-cols-1">
+
+                      <div className="flex justify-center items-center w-full">
+                        <p className=" text-black font-bold w-[200px]">Rating</p>
+                        <input type="number" min={1} max={5} name="rating" id="" required placeholder="Property Rating" className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
                       </div>
-                      <button className="hover:bg-yellow-800 bg-pink-800 w-full p-3 text-white font-bold border rounded-lg" type="submit"> Add the Review</button>
-                    </form>
-                    <div className="modal-action flex justify-center">
-                      <a href="#" className="rounded-xl bg-pink-800 text-white p-3 font-semibold ">Close!</a>
+                      <div className="flex justify-center items-center w-full">
+                        <p className=" text-black font-bold w-[200px]">Review</p>
+                        <textarea type="text" name="review" id="" required placeholder="Your Review ...........!" className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
+                      </div>
+                      <br />
                     </div>
+                    <button className="hover:bg-yellow-800 bg-pink-800 w-full p-3 text-white font-bold border rounded-lg" type="submit"> Add the Review</button>
+                  </form>
+                  <div className="modal-action flex justify-center">
+                    <a href="#" className="rounded-xl bg-pink-800 text-white p-3 font-semibold ">Close!</a>
                   </div>
                 </div>
               </div>
+            </div>
 
-            </section>
+            <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold max-w-lg mx-auto my-5">Property Report</h2>
+
+
+            {
+              reports.length !== 0 ?
+                <div className="my-10 grid lg:grid-cols-3 mx-10 justify-center items-center gap-5">
+
+                 
+                    {
+                      reports?.map(review => <div key={review._id}
+                      
+                       className='shadow-lg rounded-lg p-10 text-center'>
+                          <h3 className='text-2xl font-bold text-pink-800 my-2'>
+                            {review?.property_title
+                            }
+                          </h3>
+                          
+                          <p className=" font-semibold text-justify">{review?.report}</p>
+                          <div className='flex justify-center items-center gap-5 my-5'>
+                            <img className="w-10 h-10 rounded-full" src={review?.reporter_image} alt="" />
+                            <h3 className=' font-bold text-pink-800 my-2'>
+                              {review?.reporter_name
+                              }
+                            </h3>
+                          </div>
+
+                        </div>
+                      )
+                    }
+
+                  </div>
+                :
+                <>
+                </>
+            }
 
 
 
+            <div className="grid justify-center items-center mb-5">
+
+
+              <a href="#my_modal_9" className="rounded-xl bg-pink-800 text-white text-2xl font-bold p-5">Write a Report</a>
+
+              <div className="modal" role="dialog" id="my_modal_9">
+                <div className="modal-box">
+                  <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">Leave a Report</h2>
+                  <form onSubmit={handleReport} action="" method="post" className="border-2 rounded-2xl border-pink-800 p-5 w-full">
+                    <div className="grid grid-cols-1">
+
+                      <div className="flex justify-center items-center w-full">
+                        <p className=" text-black font-bold w-[200px]">Report Description</p>
+                        <textarea type="text" name="report" id="" required placeholder="Your Review ...........!" className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
+                      </div>
+                      <br />
+                    </div>
+                    <button className="hover:bg-yellow-800 bg-pink-800 w-full p-3 text-white font-bold border rounded-lg" type="submit"> Add the Report</button>
+                  </form>
+                  <div className="modal-action flex justify-center">
+                    <a href="#" className="rounded-xl bg-pink-800 text-white p-3 font-semibold ">Close!</a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -235,8 +365,6 @@ const DetailsPage = () => {
       </div>
 
     </div>
-
-
   );
 };
 

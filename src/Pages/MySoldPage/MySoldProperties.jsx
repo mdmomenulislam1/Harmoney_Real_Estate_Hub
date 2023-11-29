@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../Firebase/AuthProvider';
 import useAxiosSecure from '../../Hooks/UseAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import { Helmet } from 'react-helmet';
 
 const MySoldProperties = () => {
 
@@ -27,6 +28,9 @@ const MySoldProperties = () => {
 
   return (
     <div className="my-5">
+      <Helmet>
+              <title>{'HRE-hub || Sold Page'}</title>
+            </Helmet>
       <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">Property Sold Page</h2>
 
       {

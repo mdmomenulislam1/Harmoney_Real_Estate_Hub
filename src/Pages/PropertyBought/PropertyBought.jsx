@@ -10,6 +10,9 @@ const PropertyBought = () => {
 
   return (
     <div className="my-5">
+      <Helmet>
+              <title>{'HRE-hub || Bought Page'}</title>
+            </Helmet>
       <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">Property Bought Page</h2>
 
       {
