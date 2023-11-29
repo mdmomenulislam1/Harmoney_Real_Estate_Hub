@@ -43,6 +43,7 @@ import AdvertisementDetails from './Pages/HomePage/AdvertisementDetails.jsx';
 import GeneralRoute from './Firebase/GeneralRoute.jsx';
 import RequestedProperties from './Pages/RequestedProperties/RequestedProperties.jsx';
 import ManageReports from './Pages/ManageReports/ManageReports.jsx';
+import EditProfile from './SharedElement/EditProfile.jsx';
 
 const queryClient = new QueryClient();
 
@@ -73,6 +74,7 @@ const router = createBrowserRouter([
         element: <PrivateRoute> <AdvertisementDetails></AdvertisementDetails> </PrivateRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/advertiseProperty/${params._id}`)
       },
+      
       {
         path: "/allProperties/:_id",
         element: <PrivateRoute><DetailsPage></DetailsPage></PrivateRoute>,
@@ -88,6 +90,11 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/myProfile",
         element:<GeneralRoute> <MyProfile></MyProfile> </GeneralRoute>
+      },
+      {
+        path: "/dashboard/editProfile/:_id",
+        element: <PrivateRoute> <EditProfile></EditProfile> </PrivateRoute>,
+        loader: ({ params }) => fetch(`http://localhost:5000/user/${params._id}`)
       },
       {
         path: "/dashboard/wishlist",

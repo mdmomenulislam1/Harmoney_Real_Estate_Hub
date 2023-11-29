@@ -29,19 +29,19 @@ const Dashboard = () => {
   const [userInfo] = useUsers();
   console.log(userInfo);
   const userData = userInfo?.filter((item) => item?.email === user?.email);
-  
+
 
 
   return (
     <div>
-     
+
       <div className="flex">
-        <div className="h-screen w-1/4 lg:w-1/6 px-5 pt-10 shadow-2xl shadow-purple-600 bg-cyan-700">
+        <div className=" w-1/4 lg:w-1/6 px-5 pt-10 rounded-r-xl bg-cyan-700">
           <ul className="menu">
             {
               (userData[0]?.role !== "Agent" && userData[0]?.role !== "Admin")
                 ? <>
-                  <li> <NavLink to="/dashboard/myProfile" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <img className="rounded-full w-8 h-8" src={user?.photoURL} alt="" /> My Profile </NavLink></li>
+                  <li> <NavLink to="/dashboard/myProfile" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <img className="rounded-full w-8 h-8" src={userData[0]?.profile} alt="" /> My Profile </NavLink></li>
                   <li> <NavLink to="/dashboard/wishlist" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <LuClipboardList className=" text-2xl" /> Wishlist</NavLink></li>
                   <li> <NavLink to="/dashboard/propertyBought" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <MdOutlineAddHomeWork className=" text-2xl" /> Property Bought</NavLink></li>
                   <li> <NavLink to="/dashboard/myReviews" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <MdOutlineRateReview className=" text-2xl" /> My Reviews</NavLink></li>
@@ -53,12 +53,12 @@ const Dashboard = () => {
 
             {
               (userData[0]?.role === "Agent") ? <>
-                <li> <NavLink to="/dashboard/agentProfile" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"><img className="rounded-full w-8 h-8" src={user?.photoURL} alt="" /> Agent Profile</NavLink></li>
+                <li> <NavLink to="/dashboard/agentProfile" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"><img className="rounded-full w-8 h-8" src={userData[0]?.profile} alt="" /> Agent Profile</NavLink></li>
                 <li> <NavLink to="/dashboard/AddProperty" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <MdOutlineAddHomeWork className=" text-2xl" /> Add Property</NavLink></li>
                 <li> <NavLink to="/dashboard/myAddedProperties" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <FaRegWindowRestore className="text-2xl" /> Added Properties</NavLink></li>
-                <li> <NavLink to="/dashboard/mySoldProperties" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <CgShutterstock className="text-2xl"/> My Sold Properties</NavLink></li>
+                <li> <NavLink to="/dashboard/mySoldProperties" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <CgShutterstock className="text-2xl" /> My Sold Properties</NavLink></li>
                 <li> <NavLink to="/dashboard/requestedProperties" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black">
-                <CiSquareQuestion className="text-2xl" /> Requested Property</NavLink></li>
+                  <CiSquareQuestion className="text-2xl" /> Requested Property</NavLink></li>
               </>
                 :
                 <>
@@ -66,12 +66,12 @@ const Dashboard = () => {
 
             {
               (userData[0]?.role === "Admin") ? <>
-                <li> <NavLink to="/dashboard/adminProfile" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <img className="rounded-full w-8 h-8" src={user?.photoURL} alt="" /> Admin Profile</NavLink></li>
+                <li> <NavLink to="/dashboard/adminProfile" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <img className="rounded-full w-8 h-8" src={userData[0]?.profile} alt="" /> Admin Profile</NavLink></li>
                 <li> <NavLink to="/dashboard/manageProperties" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <MdOutlineAddHomeWork className=" text-2xl" /> Manage Properties</NavLink></li>
-                <li> <NavLink to="/dashboard/manageUsers" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <TbUsersGroup className=" text-2xl"/> Manage Users</NavLink></li>
+                <li> <NavLink to="/dashboard/manageUsers" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <TbUsersGroup className=" text-2xl" /> Manage Users</NavLink></li>
                 <li> <NavLink to="/dashboard/manageReviews" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <MdOutlineRateReview className=" text-2xl" /> Manage Reviews</NavLink></li>
                 <li> <NavLink to="/dashboard/advertiseProperty" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <FcAdvertising className=" text-2xl" /> Advertise Property</NavLink></li>
-                <li> <NavLink to="/dashboard/manageReports" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <MdReportGmailerrorred  className=" text-2xl" /> Reported Property</NavLink></li>
+                <li> <NavLink to="/dashboard/manageReports" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <MdReportGmailerrorred className=" text-2xl" /> Reported Property</NavLink></li>
               </> : <>
               </>
             }
@@ -83,7 +83,7 @@ const Dashboard = () => {
           </ul>
         </div>
         <div className="w-full mx-4 md:mx-6 lg:mx-10 my-5 md:my-8 lg:my-12 text-center">
-        <h2 className="text-4xl text-center font-bold text-pink-800"> Dashboard</h2>
+          <h2 className="text-4xl text-center font-bold text-pink-800"> Dashboard</h2>
           <Outlet></Outlet>
 
         </div>
