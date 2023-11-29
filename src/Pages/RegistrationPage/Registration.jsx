@@ -66,7 +66,7 @@ const Registration = () => {
         .then((result) => {
 
           const userInfo = {
-            name: name,
+            name: result?.user?.displayName,
             email: result?.user?.email,
             profile: result?.user?.photoURL,
             role: '',

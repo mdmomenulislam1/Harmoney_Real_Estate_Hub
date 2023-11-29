@@ -21,7 +21,7 @@ const PaymentHistory = () => {
   const total = paymentData.reduce((pre, current) => pre + parseInt(current.offeredAmount), 0);
   const totalSold = paymentData.length;
   return (
-    <div>
+    <div className="my-3">
       <Helmet>
         <title>{'HRE-hub || Payment History'}</title>
       </Helmet>
@@ -50,7 +50,7 @@ const PaymentHistory = () => {
                   <th className="border-2 border-white ">Payment ID</th>
 
 
-                  <th className="border-2 border-white ">Sold Price ($)</th>
+                  <th className="border-2 border-white ">Payment ($)</th>
 
                 </tr>
               </thead>

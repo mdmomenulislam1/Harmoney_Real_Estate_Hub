@@ -5,9 +5,12 @@ import { BsEnvelopeDash } from "react-icons/bs";
 import { AiTwotoneAppstore } from "react-icons/ai";
 import { FiHome } from "react-icons/fi";
 import { CiLogin, CiLogout } from "react-icons/ci";
+import useUsers from "../Hooks/useUsers";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [userInfo] = useUsers();
+  const userData = userInfo?.filter((item) => item?.email === user?.email);
 
   const handleSignOut = () => {
     logOut()
@@ -28,7 +31,7 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <img src={user.photoURL} alt="" className="w-[50px] h-[50px] rounded-full m-5" />
+          <img src={userData[0]?.profile} alt="" className="w-[50px] h-[50px] rounded-full m-5" />
           <button onClick={handleSignOut} className="px-3 py-2 font-bold rounded-lg mb-2 bg-green-700 text-white hover:bg-black text-left flex items-center justify-center gap-2"> <CiLogout className="text-2xl" /> Log Out</button>
   </div>
         :

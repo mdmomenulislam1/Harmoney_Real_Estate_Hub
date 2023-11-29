@@ -5,6 +5,7 @@ import useAxiosSecure from "../../Hooks/UseAxiosSecure";
 import { AuthContext } from "../../Firebase/AuthProvider";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useQuery } from "@tanstack/react-query";
+import useUsers from "../../Hooks/useUsers";
 
 
 const CheckoutForm = () => {
@@ -19,6 +20,10 @@ const CheckoutForm = () => {
     const cart = useLoaderData();
 
     const { _id, propertyName, propertyLocation, property_image, orderedDate, agentName, buyerName, agentEmail, buyerEmail, offeredAmount, status } = cart || {};
+
+
+    const [userInfo] = useUsers();
+    const userData = userInfo?.filter((item) => item?.email === user?.email);
 
 
     const totalPrice = offeredAmount;
@@ -139,12 +144,12 @@ const CheckoutForm = () => {
 
             <div className="flex justify-center items-center w-full">
                 <p className=" text-black font-bold w-[200px]">Your Name</p>
-                <input type="text" name="buyer_name" id="" required defaultValue={user?.displayName} disabled className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
+                <input type="text" name="buyer_name" id="" required defaultValue={userData[0]?.name} disabled className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
             </div>
 
             <div className="flex justify-center items-center w-full">
                 <p className=" text-black font-bold w-[200px]">Your Email</p>
-                <input type="text" name="buyer_name" id="" required defaultValue={user?.email} disabled className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
+                <input type="text" name="buyer_name" id="" required defaultValue={userData[0]?.email} disabled className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
             </div>
 
 

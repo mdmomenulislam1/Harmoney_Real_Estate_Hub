@@ -45,12 +45,7 @@ const ManageUsers = () => {
       name: item.name,
       email: item.email,
       profile: item.profile,
-      role: "Agent",
-      profession,
-      bod,
-      bio,
-      presentAddress,
-      permanentAddress
+      role: "Agent"
     };
 
     axiosSecure.patch(`/user/${item._id}`, agentData)

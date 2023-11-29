@@ -48,7 +48,7 @@ const AddProperty = () => {
         property_location,
         agent_name,
         agent_email,
-        agent_image: user?.photoURL,
+        agent_image: userData[0]?.profile,
         price_range,
         verification_status: "Pending",
         property_description,

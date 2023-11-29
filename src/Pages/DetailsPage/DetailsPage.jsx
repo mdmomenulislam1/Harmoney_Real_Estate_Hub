@@ -13,6 +13,7 @@ import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 import { FaQuoteRight } from "react-icons/fa";
 import { MdVerified } from 'react-icons/md';
+import useUsers from '../../Hooks/useUsers';
 
 const DetailsPage = () => {
   const property = useLoaderData();
@@ -22,6 +23,9 @@ const DetailsPage = () => {
 
   const [reviews, setReviews] = useState([]);
   const [reports, setReports] = useState([]);
+
+  const [userInfo] = useUsers();
+  const userData = userInfo?.filter((item) => item?.email === user?.email);
 
   useEffect(() => {
     fetch('https://server-site-psi-six.vercel.app/review')
@@ -44,7 +48,7 @@ const DetailsPage = () => {
 
   const handleWishlist = () => {
     const wishedPropertyData = {
-      property_image, property_title, property_location, agent_name, agent_image, agent_email, verification_status, price_range, buyer_name: user?.displayName, buyer_email: user?.email
+      property_image, property_title, property_location, agent_name, agent_image, agent_email, verification_status, price_range, buyer_name: userData[0]?.name, buyer_email: userData[0]?.email
     }
     if (user?.email === agent_email) {
       return Swal.fire({
@@ -94,10 +98,10 @@ const DetailsPage = () => {
       review,
       agent_name,
       review_time,
-      reviewer_name: user?.displayName,
-      reviewer_email: user?.email,
-      reviewer_image: user?.photoURL,
-    }
+      reviewer_name: userData[0]?.name,
+      reviewer_email: userData[0]?.email,
+      reviewer_image: userData[0]?.profile,
+    };
 
     if (user?.email === agent_email) {
       return Swal.fire({
@@ -146,9 +150,9 @@ const DetailsPage = () => {
       report,
       agent_name,
       report_time,
-      reporter_name: user?.displayName,
-      reporter_email: user?.email,
-      reporter_image: user?.photoURL,
+      reporter_name: userData[0]?.name,
+      reporter_email: userData[0]?.email,
+      reporter_image: userData[0]?.profile,
     }
 
     if (user?.email === agent_email) {
@@ -224,7 +228,7 @@ const DetailsPage = () => {
           </div>
 
           <div>
-            <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold max-w-lg mx-auto">Property Review</h2>
+            <h2 className="text-3xl text-center border-y-4 my-3 p-5 rounded-xl border-blue-800 font-bold max-w-lg mx-auto">Property Review</h2>
             {
               reviews?.length !== 0 ?
                 <section className="my-20 max-w-screen-xl mx-auto">

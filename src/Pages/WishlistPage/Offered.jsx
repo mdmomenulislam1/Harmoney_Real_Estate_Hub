@@ -3,6 +3,7 @@ import { useLoaderData } from 'react-router-dom';
 import swal from 'sweetalert';
 import { AuthContext } from '../../Firebase/AuthProvider';
 import { Helmet } from 'react-helmet';
+import useUsers from '../../Hooks/useUsers';
 
 const Offered = () => {
   const { user } = useContext(AuthContext);
@@ -11,6 +12,9 @@ const Offered = () => {
   const { property_title, property_image, agent_name, agent_email, property_location, price_range } = wishedItem;
 
   const today = new Date();
+
+  const [userInfo] = useUsers();
+  const userData = userInfo?.filter((item) => item?.email === user?.email);
 
   const [mini, maxi] = (price_range ?? '').split('-');
   const lower = parseInt(mini, 10);
@@ -84,12 +88,12 @@ const Offered = () => {
 
           <div className="flex justify-center items-center w-full">
             <p className=" text-slate-600 font-bold w-[200px]">Buyer Name</p>
-            <input type="text" name="buyer_name" id="" defaultValue={user?.displayName} disabled className="m-3 w-3/4 p-3 text-slate-600 font-semibold border border-slate-600 rounded-lg" />
+            <input type="text" name="buyer_name" id="" defaultValue={userData[0]?.name} disabled className="m-3 w-3/4 p-3 text-slate-600 font-semibold border border-slate-600 rounded-lg" />
           </div>
 
           <div className="flex justify-center items-center w-full">
             <p className=" text-slate-600 font-bold w-[200px]">Buyer Email</p>
-            <input type="text" name="buyer_email" id="" defaultValue={user?.email} disabled className="m-3 w-3/4 p-3 text-slate-600 font-semibold border border-slate-600 rounded-lg" />
+            <input type="text" name="buyer_email" id="" defaultValue={userData[0]?.email} disabled className="m-3 w-3/4 p-3 text-slate-600 font-semibold border border-slate-600 rounded-lg" />
           </div>
 
           <div className="flex justify-center items-center w-full">
