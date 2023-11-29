@@ -45,7 +45,12 @@ const ManageUsers = () => {
       name: item.name,
       email: item.email,
       profile: item.profile,
-      role: "Agent"
+      role: "Agent",
+      profession,
+      bod,
+      bio,
+      presentAddress,
+      permanentAddress
     };
 
     axiosSecure.patch(`/user/${item._id}`, agentData)
@@ -130,7 +135,7 @@ const ManageUsers = () => {
         userInfo?.length !== 0 ?
           <div className="overflow-x-auto rounded-2xl my-5 md:my-10 lg:my-15">
             <table className="table">
-              
+
               <thead className="">
                 <tr className="font-bold text-white bg-pink-800">
 

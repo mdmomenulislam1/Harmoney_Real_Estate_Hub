@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useContext, useState } from "react";
+import { Helmet } from "react-helmet";
 import { useLoaderData } from "react-router-dom";
 import swal from "sweetalert";
 // import { AuthContext } from "../Firebase/AuthProvider";
@@ -18,7 +19,7 @@ const EditProfile = () => {
     bio,
     presentAddress,
     permanentAddress} = userInfo;
-  console.log(_id)
+  console.log(_id);
 
   const [image, setImage] = useState(null);
 
@@ -83,6 +84,9 @@ const EditProfile = () => {
 
   return (
     <div className="my-5">
+      <Helmet>
+        <title>{'HRE-hub || Edit Profile'}</title>
+      </Helmet>
       <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">Profile Update Page</h2>
       <form onSubmit={handleUpdateProfile} action="" method="post" className="w-full text-center border-x-4 border-b-4 rounded-lg border-blue-800">
         <div className="grid grid-cols-1 md:grid-cols-2">

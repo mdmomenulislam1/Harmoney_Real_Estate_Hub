@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import { Helmet } from 'react-helmet';
 import { AuthContext } from '../../Firebase/AuthProvider';
 import useUsers from '../../Hooks/useUsers';
 import { FaEdit } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const MyProfile = () => {
   const [userInfo] = useUsers([]);
@@ -23,7 +23,12 @@ const MyProfile = () => {
           <p className="my-3 font-bold text-green-400">User ID: {userData[0]?._id}</p>
           <p className="my-3 font-bold text-orange-800">Name: {userData[0]?.name}</p>
           <p className="my-3 font-bold">Email: {userData[0]?.email}</p>
-          <p className="my-3 font-bold text-2xl text-blue-700">Role: {userData[0]?.role}</p>
+          {
+            (userData[0]?.role === "Admin" || userData[0]?.role === "Agent") ?
+            <p className="my-3 font-bold text-2xl text-blue-700">Role: {userData[0]?.role}</p>
+            :
+            <></>
+          }
 
           {
             userData[0]?.profession ?

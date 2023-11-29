@@ -7,6 +7,7 @@ const AllProperties = () => {
   const [asc, setAsc] = useState(true);
   const [search, setSearch] = useState('');
   const [property] = useProperty(asc, search);
+
   const propertyData = property?.filter((item) => item?.verification_status === "Verified");
 
   const handleSearch = e => {
@@ -27,9 +28,11 @@ const AllProperties = () => {
           <input type="submit" value="Search" className="w-[100px] border-y-2 border-r-2 bg-pink-800 border-pink-700 p-4 rounded-r-lg font-bold text-white" />
         </form>
 
-        <button 
-        onClick={() => setAsc(!asc)} 
-        className="w-[150px]  border-y-2 border-r-2 bg-pink-800 border-pink-700 rounded-lg font-bold text-white"> {asc ? 'Price: High to Low' : 'Price: Low To High'} </button>
+        <button
+          onClick={() => setAsc(!asc)}
+          className="w-[150px]  border-y-2 border-r-2 bg-pink-800 border-pink-700 rounded-lg font-bold text-white">
+          {asc ? 'Price: High to Low' : 'Price: Low To High'}
+        </button>
       </div>
       {
         propertyData?.length !== 0 ?

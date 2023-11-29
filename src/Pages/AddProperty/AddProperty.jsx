@@ -3,12 +3,17 @@ import { AuthContext } from '../../Firebase/AuthProvider';
 import swal from 'sweetalert';
 import axios from 'axios';
 import { Helmet } from 'react-helmet';
+import useUsers from '../../Hooks/useUsers';
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING;
 
 const AddProperty = () => {
   const { user } = useContext(AuthContext);
   const [image, setImage] = useState(null);
+  const [userInfo] = useUsers();
+  const userData = userInfo?.filter((item) => item?.email === user?.email);
+
+
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -93,12 +98,12 @@ const AddProperty = () => {
 
           <div className="flex justify-center items-center w-full">
             <p className=" text-black font-bold w-[200px]">Agent Name</p>
-            <input type="text" name="agent_name" id="" defaultValue={user?.displayName} disabled className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
+            <input type="text" name="agent_name" id="" defaultValue={userData[0]?.name} disabled className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
           </div>
 
           <div className="flex justify-center items-center w-full">
             <p className=" text-black font-bold w-[200px]">Agent Email</p>
-            <input type="text" name="agent_email" id="" defaultValue={user?.email} disabled className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
+            <input type="text" name="agent_email" id="" defaultValue={userData[0]?.email} disabled className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
           </div>
 
 

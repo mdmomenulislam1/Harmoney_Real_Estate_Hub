@@ -66,10 +66,15 @@ const Registration = () => {
         .then((result) => {
 
           const userInfo = {
-            name: result?.user?.displayName,
+            name: name,
             email: result?.user?.email,
             profile: result?.user?.photoURL,
-            role: ''
+            role: '',
+            profession: '',
+            bod:'',
+            bio:'',
+            presentAddress:'',
+            permanentAddress:''
           }
           axiosPublic.post('/user', userInfo)
             .then(res => {
@@ -86,7 +91,7 @@ const Registration = () => {
                 navigate(location?.state ? location.state : '/');
               }
             });
-         
+
 
 
         });
@@ -151,14 +156,14 @@ const Registration = () => {
                   }
                 </span>
               </div>
-              <input type="checkbox" name="terms" id="terms" required  /> Accept terms and conditions
+              <input type="checkbox" name="terms" id="terms" required /> Accept terms and conditions
               <div className="form-control mt-6">
                 <button className="bg-pink-800 font-bold text-center hover:bg-yellow-800 text-white p-3 rounded-lg">Registration</button>
               </div>
               <p className="flex p-2 font-bold"> Are you old user? Please <Link to="/login" className="px-2 text-pink-800 font-extrabold"><span> Log In</span></Link></p>
 
             </form>
-            
+
             <div className="flex justify-center items-center pb-5 border-x-4 rounded-b-lg border-b-4 border-pink-800">
 
               <Link onClick={handleGoogleSignIn} className=" gap-2 flex justify-center items-center">

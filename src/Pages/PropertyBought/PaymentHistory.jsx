@@ -29,10 +29,10 @@ const PaymentHistory = () => {
 
       <div className="flex justify-between">
         <button className=" border-pink-800 border-2 text-pink-800 mx-auto text-center my-5 p-5 rounded-xl  text-2xl font-bold">
-          Total Revenue: {total}  $
+          Total Payment: {total}  $
         </button>
         <button className=" border-pink-800 border-2 text-pink-800 mx-auto text-center my-5 p-5 rounded-xl  text-2xl font-bold">
-          Total Sold: {totalSold}
+          Total Bought Item: {totalSold}
         </button>
       </div>
 
