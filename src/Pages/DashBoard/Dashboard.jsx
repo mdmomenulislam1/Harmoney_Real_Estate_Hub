@@ -15,6 +15,7 @@ import { FcAdvertising } from "react-icons/fc";
 import { CgShutterstock } from "react-icons/cg";
 import { MdReportGmailerrorred } from "react-icons/md";
 import { Helmet } from 'react-helmet';
+import { MdPayment } from "react-icons/md";
 
 const Dashboard = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -44,6 +45,7 @@ const Dashboard = () => {
                   <li> <NavLink to="/dashboard/wishlist" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <LuClipboardList className=" text-2xl" /> Wishlist</NavLink></li>
                   <li> <NavLink to="/dashboard/propertyBought" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <MdOutlineAddHomeWork className=" text-2xl" /> Property Bought</NavLink></li>
                   <li> <NavLink to="/dashboard/myReviews" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <MdOutlineRateReview className=" text-2xl" /> My Reviews</NavLink></li>
+                  <li> <NavLink to="/dashboard/myPayment" className="px-3 py-2 font-bold rounded-lg mb-2 bg-pink-700 text-white hover:bg-black"> <MdPayment MdOutlineRateReview className=" text-2xl" /> My Payment</NavLink></li>
                 </>
                 :
                 <>

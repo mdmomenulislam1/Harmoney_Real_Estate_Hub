@@ -66,8 +66,8 @@ const ManageReviews = () => {
                   <h3 className='text-4xl font-bold text-pink-800 my-2'>
                     {item?.agent_name}
                   </h3>
-                  <Rating className='mx-auto my-2' style={{ maxWidth: 250 }} value={parseInt(item?.rating)} />
-                  <FaQuoteRight className=' text-5xl mx-auto my-5' />
+                  <Rating className='mx-auto my-2' style={{ maxWidth: 150 }} value={parseInt(item?.rating)} />
+                  <FaQuoteRight className=' text-3xl mx-auto my-5' />
                   <p className=" font-semibold">{item?.review}</p>
                   <p className=" font-medium">{item?.review_time}</p>
                 </div>

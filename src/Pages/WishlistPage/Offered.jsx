@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import swal from 'sweetalert';
 import { AuthContext } from '../../Firebase/AuthProvider';
+import { Helmet } from 'react-helmet';
 
 const Offered = () => {
   const { user } = useContext(AuthContext);
@@ -54,6 +55,9 @@ const Offered = () => {
 
   return (
     <div className="my-5">
+      <Helmet>
+        <title>{'HRE-hub || Offer Property'}</title>
+      </Helmet>
       <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">Offered Page</h2>
       <form onSubmit={handleOfferedProperty} action="" method="post" className="w-full text-center border-x-4 border-b-4 rounded-xl border-blue-800">
         <div className="grid grid-cols-1 md:grid-cols-2">

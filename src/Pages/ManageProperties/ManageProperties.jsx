@@ -121,7 +121,7 @@ const ManageProperties = () => {
             <table className="table">
               {/* head */}
               <thead className="">
-                <tr className="font-bold text-xl text-white bg-pink-800">
+                <tr className="font-bold text-white bg-pink-800">
 
                   <th className="border-2 border-white ">SL.</th>
                   <th className="border-2 border-white">Title</th>
@@ -137,7 +137,7 @@ const ManageProperties = () => {
               <tbody>
 
                 {
-                  property?.map((item, index) => <tr key={item._id} className="text-xl text-slate-600 font-semibold">
+                  property?.map((item, index) => <tr key={item._id} className="text-slate-600 font-semibold">
 
                     <td className="border-2 border-pink-800 text-pink-800 ">{index + 1}</td>
                     <td className="border-2 border-pink-800 text-pink-800 ">{item.property_title}</td>

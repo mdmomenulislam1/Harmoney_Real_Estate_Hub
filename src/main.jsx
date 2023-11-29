@@ -44,6 +44,7 @@ import GeneralRoute from './Firebase/GeneralRoute.jsx';
 import RequestedProperties from './Pages/RequestedProperties/RequestedProperties.jsx';
 import ManageReports from './Pages/ManageReports/ManageReports.jsx';
 import EditProfile from './SharedElement/EditProfile.jsx';
+import PaymentHistory from './Pages/PropertyBought/PaymentHistory.jsx';
 
 const queryClient = new QueryClient();
 
@@ -120,6 +121,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/myReviews",
         element:<GeneralRoute> <MyReviews></MyReviews> </GeneralRoute>
+      },
+      {
+        path: "/dashboard/myPayment",
+        element:<GeneralRoute> <PaymentHistory></PaymentHistory> </GeneralRoute>
       },
       {
         path: "/dashboard/agentProfile",

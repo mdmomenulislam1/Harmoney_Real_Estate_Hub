@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import useWishlist from '../../Hooks/useWishlist';
 import WishedItem from './WishedItem';
 import { AuthContext } from '../../Firebase/AuthProvider';
+import { Helmet } from 'react-helmet';
 
 const Wishlist = () => {
   const {user} = useContext(AuthContext);
@@ -12,6 +13,9 @@ const Wishlist = () => {
   
   return (
       <div className="my-5">
+        <Helmet>
+        <title>{'HRE-hub || Wishlist'}</title>
+      </Helmet>
         <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">My Wishlist Page</h2>
      
           {

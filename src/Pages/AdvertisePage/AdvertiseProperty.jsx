@@ -78,7 +78,7 @@ const AdvertiseProperty = () => {
             <table className="table">
 
               <thead className="">
-                <tr className="font-bold text-xl  bg-pink-800 text-white">
+                <tr className="font-bold  bg-pink-800 text-white">
 
                   <th className="border-2 border-white ">SL.</th>
                   <th className="border-2 border-white ">Title</th>
@@ -94,7 +94,7 @@ const AdvertiseProperty = () => {
               <tbody>
 
                 {
-                  advertise?.map((item, index) => <tr key={item._id} className="text-xl text-slate-600 font-semibold">
+                  advertise?.map((item, index) => <tr key={item._id} className=" text-slate-600 font-semibold">
 
                     <td className="border-2 border-pink-800 text-pink-800 ">{index + 1}</td>
                     <td className="border-2 border-pink-800 text-pink-800 ">{item.property_title}</td>
@@ -109,8 +109,8 @@ const AdvertiseProperty = () => {
                       </div> :
 
                         <span
-                          onClick={() => handleMakeAdvertise(item)} className=" rounded-lg p-2 font-bold bg-red-800">
-                            <RiAdvertisementLine className="mx-auto text-2xl"/>
+                          onClick={() => handleMakeAdvertise(item)} className="">
+                            <RiAdvertisementLine className="mx-auto text-4xl"/>
                             </span>
 
                       }

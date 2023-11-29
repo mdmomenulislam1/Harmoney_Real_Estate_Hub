@@ -132,7 +132,7 @@ const ManageUsers = () => {
             <table className="table">
               
               <thead className="">
-                <tr className="font-bold text-xl text-white bg-pink-800">
+                <tr className="font-bold text-white bg-pink-800">
 
                   <th className="border-2 border-white ">SL.</th>
                   <th className="border-2 border-white ">Name</th>
@@ -146,7 +146,7 @@ const ManageUsers = () => {
               <tbody>
 
                 {
-                  userInfo?.map((item, index) => <tr key={item._id} className="text-xl text-slate-500 font-semibold">
+                  userInfo?.map((item, index) => <tr key={item._id} className="t text-slate-500 font-semibold">
 
                     <td className="border-2 border-pink-800 font-bold text-pink-800 ">{index + 1}</td>
                     <td className="border-2 border-pink-800 text-pink-800 ">{item.name}</td>
