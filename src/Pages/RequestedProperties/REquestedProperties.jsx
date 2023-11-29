@@ -1,7 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Firebase/AuthProvider';
-import useOffered from '../../Hooks/useOffered';
-// import RequestedItem from './RequestedItem';
 import { FaXmark } from 'react-icons/fa6';
 import { IoMdCheckmark } from 'react-icons/io';
 import useAxiosSecure from '../../Hooks/UseAxiosSecure';

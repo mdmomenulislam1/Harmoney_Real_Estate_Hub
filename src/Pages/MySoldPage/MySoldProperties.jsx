@@ -12,14 +12,18 @@ const MySoldProperties = () => {
   const { data: payment = [] } = useQuery({
     queryKey: ['payment'],
     queryFn: async () => {
-      const res = await axiosSecure.get('/payments');
+      const res = await axiosSecure.get('/offeredProperty');
       return res.data;
     }
   });
 
-  const paymentData = payment?.filter((item) => item?.agentEmail === user?.email);
+  const paymentData = payment?.filter((item) => item?.agentEmail === user?.email && item?.status == "Bought");
 
-  const total = paymentData.reduce((pre, current) => pre + current.offeredAmount, 0)
+  const total = paymentData.reduce((pre, current) => pre + parseInt(current.offeredAmount), 0);
+  const totalSold = paymentData.length;
+
+
+
 
   return (
     <div className="my-5">
@@ -31,14 +35,14 @@ const MySoldProperties = () => {
             <table className="table">
               {/* head */}
               <thead className="">
-                <tr className="font-bold text-2xl text-pink-800">
+                <tr className="font-bold text-2xl text-white bg-pink-800">
 
-                  <th className="border-2 border-pink-800 ">SL.</th>
-                  <th className="border-2 border-pink-800 ">Property Title</th>
-                  <th className="border-2 border-pink-800 ">Property Location</th>
-                  <th className="border-2 border-pink-800 ">Buyer Email</th>
-                  <th className="border-2 border-pink-800 ">Buyer Name</th>
-                  <th className="border-2 border-pink-800 ">Sold Price ($)</th>
+                  <th className="border-2 border-white ">SL.</th>
+                  <th className="border-2 border-white ">Property Title</th>
+                  <th className="border-2 border-white ">Property Location</th>
+                  <th className="border-2 border-white ">Buyer Email</th>
+                  <th className="border-2 border-white ">Buyer Name</th>
+                  <th className="border-2 border-white ">Sold Price ($)</th>
 
                 </tr>
               </thead>
@@ -65,9 +69,14 @@ const MySoldProperties = () => {
           </div>
       }
 
-      <button className="w-full bg-pink-800 text-white mx-auto text-center my-5 p-5 rounded-xl  text-2xl font-bold">
-        Total Revenue: {total}  $
-      </button>
+      <div className="flex justify-between">
+        <button className=" border-pink-800 border-2 text-pink-800 mx-auto text-center my-5 p-5 rounded-xl  text-2xl font-bold">
+          Total Revenue: {total}  $
+        </button>
+        <button className=" border-pink-800 border-2 text-pink-800 mx-auto text-center my-5 p-5 rounded-xl  text-2xl font-bold">
+          Total Sold: {totalSold}
+        </button>
+      </div>
     </div>
   );
 };

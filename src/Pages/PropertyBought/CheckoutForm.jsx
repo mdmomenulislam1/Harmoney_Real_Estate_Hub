@@ -17,7 +17,7 @@ const CheckoutForm = () => {
     const navigate = useNavigate();
     const cart = useLoaderData();
 
-    const { propertyName, propertyLocation, property_image, agentName, buyerName, agentEmail, buyerEmail, offeredAmount, status} = cart || {};
+    const {_id, propertyName, propertyLocation, property_image, orderedDate, agentName, buyerName, agentEmail, buyerEmail, offeredAmount, status} = cart || {};
 
 
     const totalPrice = offeredAmount;
@@ -79,10 +79,6 @@ const CheckoutForm = () => {
                 console.log('transaction id', paymentIntent.id);
                 setTransactionId(paymentIntent.id);
 
-                // now save the payment in the database
-
-
-
                 const payment = {
                     propertyName,
                     propertyLocation,
@@ -99,9 +95,9 @@ const CheckoutForm = () => {
                      
                 }
 
-                const res = await axiosSecure.patch('/offeredProperty', payment);
+                const res = await axiosSecure.put(`/offeredProperty/${_id}`, payment);
                 console.log('payment saved', res.data);
-                refetch();
+                
                 if (res.data?.paymentResult?.insertedId) {
                     Swal.fire({
                         position: "top-end",
@@ -178,8 +174,9 @@ const CheckoutForm = () => {
             </button>
             <p className="text-red-600 my-5 font-bold">{error}</p>
 
-            {transactionId && <p className="text-green-600">
-                 Your transaction id: {transactionId}</p>}
+            {transactionId && <p className="text-green-600 my-5 font-bold">Congratulation! Your payment has been Completed.
+            
+                 Your Transaction ID: {transactionId}</p>}
         </form>
     );
 };

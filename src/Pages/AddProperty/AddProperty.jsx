@@ -1,105 +1,70 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../Firebase/AuthProvider';
 import swal from 'sweetalert';
-import { useForm } from 'react-hook-form';
-import Swal from 'sweetalert2';
+import axios from 'axios';
 
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING;
 
 const AddProperty = () => {
   const { user } = useContext(AuthContext);
-  // const {register, handleSubmit, reset } = useForm()
+  const [image, setImage] = useState(null);
 
-  //   const onSubmit = async (data) => {
-  //     console.log(data)
-  //     // image upload to imgbb and then get an url
-  //     const imageFile = { image: data.image[0]  }
-  //     const res = await axiosPublic.post(image_hosting_api, imageFile, {
-  //         headers: {
-  //             'content-type': 'multipart/form-data'
-  //         }
-  //     });
-  //     if (res.data.success) {
-  //         // now send the menu item data to the server with the image url
-  //         const propertyData = {
-  //           property_title,
-  //           property_image,
-  //           property_location,
-  //           agent_name,
-  //           agent_email,
-  //           agent_image: user?.photoURL,
-  //           price_range,
-  //           verification_status: "Pending",
-  //           property_description
-  //         }
-  //         // 
-  //         const propertyRes = await axiosSecure.post('/property', propertyData);
-  //         console.log(property.data)
-  //         if(propertyRes.data.insertedId){
-  //             // show success popup
-  //             reset();
-  //             Swal.fire({
-  //                 position: "top-end",
-  //                 icon: "success",
-  //                 title: `${data.name} is added to the menu.`,
-  //                 showConfirmButton: false,
-  //                 timer: 1500
-  //               });
-  //         }
-  //     }
-  //     console.log( 'with image url', res.data);
-  // };
-
-
-
-
-  // const [img, setImg] = useState(null);
-
-
-
-  const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING;
-  const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
-
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
+  };
 
   const handleAddProperty = async (e) => {
     e.preventDefault();
     const form = e.target;
+
     const property_title = form.property_title.value;
-    const property_image = form.property_image.value;
     const property_location = form.property_location.value;
     const agent_name = form.agent_name.value;
     const agent_email = form.agent_email.value;
     const price_range = form.price_range.value;
     const property_description = form.property_description.value;
 
-    const propertyData = {
-      property_title,
-      property_image,
-      property_location,
-      agent_name,
-      agent_email,
-      agent_image: user?.photoURL,
-      price_range,
-      verification_status: "Pending",
-      property_description
-    }
-
-    fetch('http://localhost:5000/property', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(propertyData),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.acknowledged) {
-          swal("Okay, Done!", "Property added successfully!", "success");
-        }
+    try {
+      const formData = new FormData();
+      formData.append('image', image);
+      const imgbbResponse = await axios.post('https://api.imgbb.com/1/upload', formData, {
+        params: {
+          key: image_hosting_key, 
+        },
       });
-  }
 
+      const property_image = imgbbResponse.data.data.url;
 
+      const propertyData = {
+        property_title,
+        property_image,
+        property_location,
+        agent_name,
+        agent_email,
+        agent_image: user?.photoURL,
+        price_range,
+        verification_status: "Pending",
+        property_description,
+      };
+
+      const serverResponse = await fetch('http://localhost:5000/property', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(propertyData),
+      });
+
+      const responseData = await serverResponse.json();
+
+      if (responseData.acknowledged) {
+        swal("Okay, Done!", "Property added successfully!", "success");
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
   return (
     <div className="my-5">
       <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">Add Property Page</h2>
@@ -113,7 +78,7 @@ const AddProperty = () => {
 
           <div className="flex justify-center items-center w-full">
             <p className=" text-black font-bold w-[200px]">Property Photo URL</p>
-            <input type="text" name="property_image" id="" placeholder="Property Photo URL" required className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
+            <input type="file" onChange={handleImageChange} name="property_image" id="" placeholder="Property Photo URL" required className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
           </div>
 
           <div className="flex justify-center items-center w-full">
