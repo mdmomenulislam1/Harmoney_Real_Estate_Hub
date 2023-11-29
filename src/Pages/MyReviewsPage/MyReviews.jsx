@@ -9,6 +9,7 @@ import { FaQuoteRight } from "react-icons/fa";
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../Hooks/UseAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import { Helmet } from 'react-helmet';
 
 const MyReviews = () => {
   const axiosSecure = useAxiosSecure();
@@ -51,6 +52,9 @@ const MyReviews = () => {
 }
   return (
     <div className="my-5">
+      <Helmet>
+        <title>{'HRE-hub || My Reviews'}</title>
+      </Helmet>
       <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">My Reviews Page</h2>
      
       {
@@ -73,8 +77,6 @@ const MyReviews = () => {
               <p className=" font-medium">{item?.review_time}</p>
             </div>
             <button onClick={() => handleDeleteReview(item)} className="hover:bg-yellow-800 bg-pink-800 w-full p-3 text-white font-bold border rounded-b-lg"> Remove the Review</button>
-
-
           </div>)
         }
 

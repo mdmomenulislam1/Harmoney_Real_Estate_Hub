@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-// import useProperty from "../../Hooks/useProperties";
 import PropertyItem from "../../SharedElement/PropertyItem";
 import useAxiosSecure from "../../Hooks/UseAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
@@ -15,7 +14,6 @@ const Advertisement = () => {
     });
 
     const propertyData = advertise.filter((item) => item?.advertise_status === "Advertised")
-
 
     return (
         <div className="mx-10 my-10">
@@ -38,7 +36,6 @@ const Advertisement = () => {
             <Link to={"/allProperties"} className="grid justify-center">
 
                 <button className="btn text-2xl font-bold btn-outline border-0 border-b-4 my-3 md:my-6 lg:my-8">View All Properties</button>
-
 
             </Link>
 

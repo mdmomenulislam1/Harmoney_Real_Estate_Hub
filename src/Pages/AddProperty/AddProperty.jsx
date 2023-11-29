@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../Firebase/AuthProvider';
 import swal from 'sweetalert';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING;
 
@@ -30,7 +31,7 @@ const AddProperty = () => {
       formData.append('image', image);
       const imgbbResponse = await axios.post('https://api.imgbb.com/1/upload', formData, {
         params: {
-          key: image_hosting_key, 
+          key: image_hosting_key,
         },
       });
 
@@ -65,8 +66,12 @@ const AddProperty = () => {
       console.error('Error:', error);
     }
   };
+
   return (
     <div className="my-5">
+      <Helmet>
+        <title>{'HRE-hub || Add Property '}</title>
+      </Helmet>
       <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">Add Property Page</h2>
       <form onSubmit={handleAddProperty} action="" method="post" className="w-full text-center border-x-4 rounded-lg border-b-4 border-blue-800	">
         <div className="grid grid-cols-1 md:grid-cols-2">

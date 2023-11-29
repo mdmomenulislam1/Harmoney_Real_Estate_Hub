@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { AuthContext } from '../../Firebase/AuthProvider';
 import useUsers from '../../Hooks/useUsers';
-import { CgProfile } from "react-icons/cg";
 import { MdOutlineRateReview } from "react-icons/md";
 import { MdOutlineAddHomeWork } from "react-icons/md";
 import { TbUsersGroup } from "react-icons/tb";
@@ -15,7 +14,7 @@ import { CiSquareQuestion } from "react-icons/ci";
 import { FcAdvertising } from "react-icons/fc";
 import { CgShutterstock } from "react-icons/cg";
 import { MdReportGmailerrorred } from "react-icons/md";
-
+import { Helmet } from 'react-helmet';
 
 const Dashboard = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -30,11 +29,11 @@ const Dashboard = () => {
   console.log(userInfo);
   const userData = userInfo?.filter((item) => item?.email === user?.email);
 
-
-
   return (
     <div>
-
+      <Helmet>
+        <title>{'HRE-hub || Dashboard '}</title>
+      </Helmet>
       <div className="flex">
         <div className=" w-1/4 lg:w-1/6 px-5 pt-10 rounded-r-xl bg-cyan-700">
           <ul className="menu">

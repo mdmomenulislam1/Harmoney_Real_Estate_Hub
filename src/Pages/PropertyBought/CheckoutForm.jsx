@@ -17,7 +17,7 @@ const CheckoutForm = () => {
     const navigate = useNavigate();
     const cart = useLoaderData();
 
-    const {_id, propertyName, propertyLocation, property_image, orderedDate, agentName, buyerName, agentEmail, buyerEmail, offeredAmount, status} = cart || {};
+    const { _id, propertyName, propertyLocation, property_image, orderedDate, agentName, buyerName, agentEmail, buyerEmail, offeredAmount, status } = cart || {};
 
 
     const totalPrice = offeredAmount;
@@ -92,12 +92,12 @@ const CheckoutForm = () => {
                     orderedDate,
                     transactionId: paymentIntent.id,
                     paymentDate: new Date()
-                     
+
                 }
 
                 const res = await axiosSecure.put(`/offeredProperty/${_id}`, payment);
                 console.log('payment saved', res.data);
-                
+
                 if (res.data?.paymentResult?.insertedId) {
                     Swal.fire({
                         position: "top-end",
@@ -111,73 +111,79 @@ const CheckoutForm = () => {
             }
         }
 
-    }
+    };
+
+    
 
     return (
-        <form onSubmit={handleSubmit} className="w-full text-center border-x-4 rounded-lg border-b-4 border-blue-800">
-           
-           <div className="flex justify-center items-center w-full">
-            <p className=" text-black font-bold w-[200px]">Property Name</p>
-            <input type="text" name="property_name" id="" required defaultValue={propertyName} disabled className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
-          </div>
-          <div className="flex justify-center items-center w-full">
-            <p className=" text-black font-bold w-[200px]">Property Location</p>
-            <input type="text" name="property_location" id="" required defaultValue={propertyLocation} disabled className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
-          </div>
+        <div>
+            <form onSubmit={handleSubmit} className="w-full text-center border-x-4 rounded-lg border-b-4 border-blue-800 my-5">
 
-          <div className="flex justify-center items-center w-full">
-            <p className=" text-black font-bold w-[200px]">Property Price ($)</p>
-            <input type="text" name="property_price" id="" required defaultValue={offeredAmount} disabled className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
-          </div>
+                <div className="flex justify-center items-center w-full">
+                    <p className=" text-black font-bold w-[200px]">Property Name</p>
+                    <input type="text" name="property_name" id="" required defaultValue={propertyName} disabled className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
+                </div>
+                <div className="flex justify-center items-center w-full">
+                    <p className=" text-black font-bold w-[200px]">Property Location</p>
+                    <input type="text" name="property_location" id="" required defaultValue={propertyLocation} disabled className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
+                </div>
 
-          <div className="flex justify-center items-center w-full">
-            <p className=" text-black font-bold w-[200px]">Agent Name</p>
-            <input type="text" name="property_name" id="" required defaultValue={agentName} disabled className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
-          </div>
+                <div className="flex justify-center items-center w-full">
+                    <p className=" text-black font-bold w-[200px]">Property Price ($)</p>
+                    <input type="text" name="property_price" id="" required defaultValue={offeredAmount} disabled className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
+                </div>
 
-          <div className="flex justify-center items-center w-full">
-            <p className=" text-black font-bold w-[200px]">Your Name</p>
-            <input type="text" name="buyer_name" id="" required defaultValue={user?.displayName} disabled className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
-          </div>
+                <div className="flex justify-center items-center w-full">
+                    <p className=" text-black font-bold w-[200px]">Agent Name</p>
+                    <input type="text" name="property_name" id="" required defaultValue={agentName} disabled className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
+                </div>
 
-          <div className="flex justify-center items-center w-full">
-            <p className=" text-black font-bold w-[200px]">Your Email</p>
-            <input type="text" name="buyer_name" id="" required defaultValue={user?.email} disabled className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
-          </div>
+                <div className="flex justify-center items-center w-full">
+                    <p className=" text-black font-bold w-[200px]">Your Name</p>
+                    <input type="text" name="buyer_name" id="" required defaultValue={user?.displayName} disabled className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
+                </div>
 
-          
-            <p className=" text-black mx-auto mt-5 text-center font-bold w-[200px]">Payment Please</p>
-            <CardElement
-            className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg mx-auto"
-                options={{
-                    style: {
-                        base: {
-                            fontSize: '16px',
-                            color: '#424770',
-                            '::placeholder': {
-                                color: '#aab7c4',
+                <div className="flex justify-center items-center w-full">
+                    <p className=" text-black font-bold w-[200px]">Your Email</p>
+                    <input type="text" name="buyer_name" id="" required defaultValue={user?.email} disabled className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg" />
+                </div>
+
+
+                <p className=" text-black mx-auto mt-5 text-center font-bold w-[200px]">Payment Please</p>
+                <CardElement
+                    className="m-3 w-3/4 p-3 text-black font-semibold border rounded-lg mx-auto"
+                    options={{
+                        style: {
+                            base: {
+                                fontSize: '16px',
+                                color: '#424770',
+                                '::placeholder': {
+                                    color: '#aab7c4',
+                                },
+                            },
+                            invalid: {
+                                color: '#9e2146',
                             },
                         },
-                        invalid: {
-                            color: '#9e2146',
-                        },
-                    },
-                }}
-            />
-            
-          
-            
-            <button className=" bg-blue-800 hover:bg-yellow-800 w-full p-3 text-white font-bold border rounded-b-lg" type="submit"
+                    }}
+                />
 
-            >
-                Pay
-            </button>
-            <p className="text-red-600 my-5 font-bold">{error}</p>
 
-            {transactionId && <p className="text-green-600 my-5 font-bold">Congratulation! Your payment has been Completed.
-            
-                 Your Transaction ID: {transactionId}</p>}
-        </form>
+
+                <button className=" bg-blue-800 hover:bg-yellow-800 w-full p-3 text-white font-bold border rounded-b-lg" type="submit"
+
+                >
+                    Pay
+                </button>
+                <p className="text-red-600 my-5 font-bold">{error}</p>
+
+                {transactionId && <p className="text-green-600 my-5 font-bold">Congratulation! Your payment has been Completed.
+
+                    Your Transaction ID: {transactionId}</p>}
+            </form>
+
+            <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">Payment History </h2>
+        </div>
     );
 };
 

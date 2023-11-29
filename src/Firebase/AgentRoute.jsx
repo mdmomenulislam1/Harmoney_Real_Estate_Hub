@@ -3,8 +3,6 @@ import  { AuthContext } from "./AuthProvider";
 import { Navigate, useLocation } from "react-router-dom";
 import useAgent from "../Hooks/useAgent";
 
-
-
 const AgentRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
     const [isAgent, isAgentLoading] = useAgent();

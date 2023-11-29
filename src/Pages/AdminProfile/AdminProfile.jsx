@@ -3,7 +3,6 @@ import useUsers from '../../Hooks/useUsers';
 import { AuthContext } from '../../Firebase/AuthProvider';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
-// import { CiEdit } from "react-icons/ci";
 import { FaEdit } from "react-icons/fa";
 
 const AdminProfile = () => {
@@ -25,7 +24,6 @@ const AdminProfile = () => {
           <p className="my-3 font-bold text-orange-800">Name: {userData[0]?.name}</p>
           <p className="my-3 font-bold">Email: {userData[0]?.email}</p>
           <p className="my-3 font-bold text-2xl text-blue-700">Role: {userData[0]?.role}</p>
-
 
           {
             userData[0]?.profession ?
@@ -62,8 +60,6 @@ const AdminProfile = () => {
               :
               <></>
           }
-
-
         </div>
 
       </div>

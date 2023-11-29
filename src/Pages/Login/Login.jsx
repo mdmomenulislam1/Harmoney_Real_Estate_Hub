@@ -103,7 +103,7 @@ const Login = () => {
                 user ?
                     <div className="text-center">
                         <Helmet>
-                            <title>{'Corner Cafe || My Profile'}</title>
+                            <title>{'HRE-hub || My Profile'}</title>
                         </Helmet>
                         <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">My Information</h2>
                         <img src={user?.photoURL} alt="" className="rounded-lg mx-auto my-3" />
@@ -113,7 +113,7 @@ const Login = () => {
                     </div> :
                     <div className="">
                         <Helmet>
-                            <title>{'Corner Cafe || Login '}</title>
+                            <title>{'HRE-hub || Login '}</title>
                         </Helmet>
                         <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">LogIn Page</h2>
                         <div className="border-x-4 border-pink-800 p-5">

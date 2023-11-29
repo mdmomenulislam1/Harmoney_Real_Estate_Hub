@@ -1,7 +1,7 @@
 
 import { useContext } from 'react';
 import { Helmet } from 'react-helmet';
-import { Link, useLoaderData, useParams } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Firebase/AuthProvider';
 import Swal from 'sweetalert2';
 import React, { useEffect, useState } from 'react';
@@ -78,7 +78,7 @@ const AdvertisementDetails = () => {
           });
         }
       })
-  };
+  }
 
   const handleReview = (e) => {
     e.preventDefault();
@@ -131,7 +131,8 @@ const AdvertisementDetails = () => {
         }
       });
 
-  };
+  }
+
 
   const handleReport = (e) => {
     e.preventDefault();
@@ -175,15 +176,14 @@ const AdvertisementDetails = () => {
           Swal.fire({
             position: "top-end",
             icon: "success",
-            title: "Review is added successfully",
+            title: "Report is added successfully",
             showConfirmButton: false,
             timer: 1500
           });
         }
       });
 
-  };
-
+  }
 
   return (
     <div className="mx-5 md:mx-10 lg:mx-15 my-4 md:my-8 lg:my-12">
@@ -214,7 +214,7 @@ const AdvertisementDetails = () => {
               <div data-aos="flip-right" className="w-1/2">
                 <h2 className="text-4xl font-bold mb-4">Property Description</h2>
                 <p className="text-justify font-semibold">{property_description}</p>
-                <button onClick={handleWishlist} className="w-full bg-pink-800 text-white mx-auto text-center my-5 p-5 rounded-xl  text-2xl font-bold">
+                <button onClick={handleWishlist} className="w-full bg-pink-800 text-white mx-auto text-center my-5 p-3 rounded-xl  text-2xl font-bold">
                   Add to Wishlist
                 </button>
 
@@ -232,19 +232,20 @@ const AdvertisementDetails = () => {
                   <Swiper
                     navigation={true} modules={[Navigation]} className="my-10 mySwiper">
                     {
-                      reviews?.map(review => <SwiperSlide key={review._id}>
+                      reviews?.map(review => <SwiperSlide key={review._id}
+                      className="">
 
                         <div className=' mx-28 text-center'>
                           <h3 className='text-3xl font-bold text-pink-800 my-2'>
                             {review?.property_title
                             }
                           </h3>
-                          <Rating className='mx-auto my-2' style={{ maxWidth: 250 }} value={parseInt(review?.rating)} />
-                          <FaQuoteRight className=' text-8xl mx-auto my-5' />
+                          <Rating className='mx-auto my-2' style={{ maxWidth: 150 }} value={parseInt(review?.rating)} />
+                          <FaQuoteRight className=' text-4xl mx-auto my-5' />
                           <p className=" font-semibold">{review?.review}</p>
                           <div className='flex justify-center items-center gap-5 my-5'>
-                            <img className="w-20 h-20 rounded-full" src={review?.reviewer_image} alt="" />
-                            <h3 className='text-4xl font-bold text-pink-800 my-2'>
+                            <img className="w-16 h-16 rounded-full" src={review?.reviewer_image} alt="" />
+                            <h3 className='text-2xl font-bold text-pink-800 my-2'>
                               {review?.reviewer_name
                               }
                             </h3>
@@ -268,7 +269,7 @@ const AdvertisementDetails = () => {
             <div className="grid justify-center items-center mb-5">
 
 
-              <a href="#my_modal_8" className="rounded-xl bg-pink-800 text-white text-2xl font-bold p-5">Write a review</a>
+              <a href="#my_modal_8" className="rounded-xl bg-pink-800 text-white text-2xl font-bold p-3">Review this property</a>
 
               <div className="modal" role="dialog" id="my_modal_8">
                 <div className="modal-box">
@@ -336,7 +337,7 @@ const AdvertisementDetails = () => {
             <div className="grid justify-center items-center mb-5">
 
 
-              <a href="#my_modal_9" className="rounded-xl bg-pink-800 text-white text-2xl font-bold p-5">Report this property</a>
+              <a href="#my_modal_9" className="rounded-xl bg-pink-800 text-white text-2xl font-bold p-3">Report this property</a>
 
               <div className="modal" role="dialog" id="my_modal_9">
                 <div className="modal-box">

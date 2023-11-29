@@ -3,7 +3,6 @@ import { useContext } from "react";
 import { AuthContext } from "../Firebase/AuthProvider";
 import useAxiosSecure from "./UseAxiosSecure";
 
-
 const useAgent = () => {
     const { user, loading } = useContext(AuthContext);
     const axiosSecure = useAxiosSecure();

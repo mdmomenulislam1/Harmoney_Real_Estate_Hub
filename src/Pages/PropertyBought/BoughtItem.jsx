@@ -9,6 +9,7 @@ const BoughtItem = ({ item }) => {
   const { _id, propertyName, propertyLocation, property_image, agentName, buyerName, buyerEmail, offeredAmount, orderedDate, status } = item;
   return (
     <div className="rounded-lg shadow-lg">
+      
       <img className="h-[300px] rounded-t-lg w-full" src={property_image} alt="" />
       <div class="border-l-8 border-black text-left rounded-b-lg p-3">
         <h3 className="text-2xl font-bold">{propertyName}</h3>
@@ -17,7 +18,7 @@ const BoughtItem = ({ item }) => {
           <p className="font-bold ">{agentName}</p>
 
         </div>
-        <p className="font-bold my-2">Price: $ {offeredAmount}</p>
+        <p className="font-bold my-2">Price ($): {offeredAmount}</p>
 
         <p className="font-bold">
           {
@@ -44,10 +45,7 @@ const BoughtItem = ({ item }) => {
 
         </p>
 
-        <p className="font-medium">Status: {status}
-
-
-        </p>
+        
         <div className="flex gap-3">
           {
             (status === "Approved") ?

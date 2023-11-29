@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { MdVerified } from "react-icons/md";
 
-
 const PropertyItem = ({ item }) => {
   const { _id, property_image, property_title, agent_name, agent_image, property_location, price_range, verification_status } = item || {};
   return (
@@ -17,9 +16,7 @@ const PropertyItem = ({ item }) => {
         </div>
         <p className="font-bold my-2">Price Range: {price_range}</p>
 
-
         <p className="font-bold flex items-center gap-2">Status: {verification_status} <MdVerified className="text-blue-800 text-2xl" /></p>
-
 
         <Link to={`/allProperties/${_id}`}>
           <button className="btn text-2xl font-bold btn-outline border-0 border-b-4 mt-4"> Details </button>

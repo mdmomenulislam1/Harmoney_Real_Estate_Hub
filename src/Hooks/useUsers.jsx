@@ -5,7 +5,6 @@ const useUsers = () => {
   
     const axiosPublic = useAxiosPublic();
    
-
     const { data: userInfo = [], isPending: loading, refetch } = useQuery({
       queryKey: ['userInfo'],
       queryFn: async () => {
@@ -13,7 +12,6 @@ const useUsers = () => {
         return res.data;
       }
     })
-
 
     return [userInfo, loading, refetch]
   };

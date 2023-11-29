@@ -4,7 +4,6 @@ import { AuthContext } from '../../Firebase/AuthProvider';
 import useUsers from '../../Hooks/useUsers';
 import { FaEdit } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-// import MyProfile from '../MyProfilePage/MyProfile';
 
 const MyProfile = () => {
   const [userInfo] = useUsers([]);
@@ -14,9 +13,9 @@ const MyProfile = () => {
   return (
     <div className="mx-4 md:mx-6 lg:mx-10 my-5 md:my-8 lg:my-12 text-center">
       <Helmet>
-        <title>{'HRE-hub || Admin Profile'}</title>
+        <title>{'HRE-hub || My Profile'}</title>
       </Helmet>
-      <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">Admin Profile</h2>
+      <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">My Profile Info.</h2>
 
       <div className="">
         <img src={userData[0]?.profile} alt="" className="rounded-lg mx-auto my-3 w-40 h-40" />
@@ -25,7 +24,6 @@ const MyProfile = () => {
           <p className="my-3 font-bold text-orange-800">Name: {userData[0]?.name}</p>
           <p className="my-3 font-bold">Email: {userData[0]?.email}</p>
           <p className="my-3 font-bold text-2xl text-blue-700">Role: {userData[0]?.role}</p>
-
 
           {
             userData[0]?.profession ?
@@ -54,7 +52,6 @@ const MyProfile = () => {
               :
               <></>
           }
-
 
           {
             userData[0]?.permanentAddress ?

@@ -103,7 +103,7 @@ const Registration = () => {
       {
         user ? <div className="text-center">
           <Helmet>
-            <title>{'Corner Cafe || My Profile'}</title>
+            <title>{'HRE-hub || My Profile'}</title>
           </Helmet>
           <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">My Information</h2>
 

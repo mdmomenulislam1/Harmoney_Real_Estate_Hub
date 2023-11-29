@@ -3,7 +3,6 @@ import useAxiosSecure from "./UseAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { AuthContext } from "../Firebase/AuthProvider";
 
-
 const useCart = () => {
     const axiosSecure = useAxiosSecure();
     const { user} = useContext(AuthContext);

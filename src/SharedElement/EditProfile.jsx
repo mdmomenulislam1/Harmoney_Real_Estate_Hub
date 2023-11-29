@@ -80,7 +80,7 @@ const EditProfile = () => {
   };
 
 
-  
+
   return (
     <div className="my-5">
       <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">Profile Update Page</h2>

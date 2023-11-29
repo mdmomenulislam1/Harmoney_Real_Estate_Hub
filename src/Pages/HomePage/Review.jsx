@@ -35,12 +35,12 @@ const Review = () => {
                 {review?.property_title
                 }
               </h3>
-              <Rating className='mx-auto my-2' style={{ maxWidth: 250 }} value={parseInt(review?.rating)} />
-              <FaQuoteRight className=' text-8xl mx-auto my-5' />
+              <Rating className='mx-auto my-2' style={{ maxWidth: 200 }} value={parseInt(review?.rating)} />
+              <FaQuoteRight className=' text-4xl mx-auto my-5' />
               <p className=" font-semibold">{review?.review}</p>
               <div className='flex justify-center items-center gap-5 my-5'>
-              <img className="w-20 h-20 rounded-full" src={review?.reviewer_image} alt="" />
-              <h3 className='text-4xl font-bold text-pink-800 my-2'>
+              <img className="w-16 h-16 rounded-full" src={review?.reviewer_image} alt="" />
+              <h3 className='text-2xl font-bold text-pink-800 my-2'>
                 {review?.reviewer_name
                 }
               </h3>

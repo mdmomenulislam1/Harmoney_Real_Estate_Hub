@@ -1,11 +1,11 @@
 import React from 'react';
-// import useReview from '../../Hooks/useReview';
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 import { FaQuoteRight } from "react-icons/fa";
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../Hooks/UseAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import { Helmet } from 'react-helmet';
 
 const ManageReviews = () => {
   const axiosSecure = useAxiosSecure();
@@ -45,6 +45,9 @@ const ManageReviews = () => {
   }
   return (
     <div className="mx-4 md:mx-6 lg:mx-10 my-5 md:my-8 lg:my-12 text-center">
+      <Helmet>
+        <title>{'HRE-hub || Manage Reviews'}</title>
+      </Helmet>
       <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">Manage Reviews Page</h2>
       {
         (review.length > 0)
@@ -69,11 +72,9 @@ const ManageReviews = () => {
                   <p className=" font-medium">{item?.review_time}</p>
                 </div>
                 <button onClick={() => handleDeleteReview(item)} className="hover:bg-yellow-800 bg-pink-800 w-full p-3 text-white font-bold border rounded-b-lg"> Remove the Review</button>
-
-
               </div>)
             }
-            
+
           </div>
           :
           <div>

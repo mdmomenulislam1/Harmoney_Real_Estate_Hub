@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import useProperty from '../../Hooks/useProperties';
 import PropertyItem from './PropertyItem';
+import { Helmet } from 'react-helmet';
 
 const AllProperties = () => {
   const [asc, setAsc] = useState(true);
@@ -16,10 +17,13 @@ const AllProperties = () => {
 
   return (
     <div className="mx-10 my-10">
+      <Helmet>
+        <title>{'HRE-hub || All property'}</title>
+      </Helmet>
       <h2 className="text-3xl text-center border-y-4 p-5 rounded-xl border-blue-800 font-bold">All Properties Page</h2>
       <div className="my-5 flex justify-center">
         <form onSubmit={handleSearch} action="" >
-          <input type="text" name="search" placeholder="Property Name" className="w-1/3 border-2 border-pink-700 p-4 rounded-l-lg" />
+          <input type="text" name="search" placeholder="Property Name" className="w-2/3 border-2 font-bold text-pink-800 border-pink-700 p-4 rounded-l-lg" />
           <input type="submit" value="Search" className="w-[100px] border-y-2 border-r-2 bg-pink-800 border-pink-700 p-4 rounded-r-lg font-bold text-white" />
         </form>
 
@@ -41,7 +45,6 @@ const AllProperties = () => {
             <img className="rounded-xl h-full w-full" src="https://i.ibb.co/G2kW8nQ/image.png" alt="" />
           </div>
       }
-
 
     </div>
   );
