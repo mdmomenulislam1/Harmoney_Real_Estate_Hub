@@ -28,7 +28,6 @@ import MyReviews from './Pages/MyReviewsPage/MyReviews.jsx';
 import AgentProfile from './Pages/AgentProfile/AgentProfile.jsx';
 import MyAddedProperties from './Pages/MyAddedPage/MyAddedProperties.jsx';
 import MySoldProperties from './Pages/MySoldPage/MySoldProperties.jsx';
-import REquestedProperties from './Pages/RequestedProperties/RequestedProperties.jsx';
 import AdminProfile from './Pages/AdminProfile/AdminProfile.jsx';
 import ManageProperties from './Pages/ManageProperties/ManageProperties.jsx';
 import ManageUsers from './Pages/ManageUsers/ManageUsers.jsx';
@@ -42,6 +41,8 @@ import AdminRoute from './Firebase/AdminRoute.jsx';
 import AdvertiseProperty from './Pages/AdvertisePage/AdvertiseProperty.jsx';
 import AdvertisementDetails from './Pages/HomePage/AdvertisementDetails.jsx';
 import GeneralRoute from './Firebase/GeneralRoute.jsx';
+import RequestedProperties from './Pages/RequestedProperties/RequestedProperties.jsx';
+import ManageReports from './Pages/ManageReports/ManageReports.jsx';
 
 const queryClient = new QueryClient();
 
@@ -127,7 +128,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/requestedProperties",
-        element: <AgentRoute>  <REquestedProperties></REquestedProperties> </AgentRoute>
+        element: <AgentRoute> <RequestedProperties></RequestedProperties> </AgentRoute>
       },
       {
         path: "/dashboard/myAddedProperties",
@@ -158,7 +159,11 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/advertiseProperty",
         element: <AdminRoute> <AdvertiseProperty></AdvertiseProperty> </AdminRoute>
-      }
+      },
+      {
+        path: "/dashboard/manageReports",
+        element: <AdminRoute> <ManageReports></ManageReports>  </AdminRoute>
+      },
     ]
   }
 ]);

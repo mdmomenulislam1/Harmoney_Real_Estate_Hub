@@ -336,7 +336,7 @@ const DetailsPage = () => {
             <div className="grid justify-center items-center mb-5">
 
 
-              <a href="#my_modal_9" className="rounded-xl bg-pink-800 text-white text-2xl font-bold p-5">Write a Report</a>
+              <a href="#my_modal_9" className="rounded-xl bg-pink-800 text-white text-2xl font-bold p-5">Report this property</a>
 
               <div className="modal" role="dialog" id="my_modal_9">
                 <div className="modal-box">
