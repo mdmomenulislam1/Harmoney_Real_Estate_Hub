@@ -53,7 +53,7 @@ const UpdatedProperty = () => {
         property_description,
       };
 
-      const serverResponse = await fetch(`http://localhost:5000/property/${_id}`, {
+      const serverResponse = await fetch(`https://server-site-psi-six.vercel.app/property/${_id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

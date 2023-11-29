@@ -49,7 +49,7 @@ const AddProperty = () => {
         property_description,
       };
 
-      const serverResponse = await fetch('http://localhost:5000/property', {
+      const serverResponse = await fetch('https://server-site-psi-six.vercel.app/property', {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

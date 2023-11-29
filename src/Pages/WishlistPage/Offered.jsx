@@ -36,7 +36,7 @@ const Offered = () => {
       propertyName, propertyLocation, property_image, agentName, agentEmail, buyerName, buyerEmail, offeredAmount, orderedDate, status: "Pending"
     }
 
-    fetch('http://localhost:5000/offeredProperty', {
+    fetch('https://server-site-psi-six.vercel.app/offeredProperty', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

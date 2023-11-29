@@ -24,7 +24,7 @@ const AdvertisementDetails = () => {
   const [reports, setReports] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/review')
+    fetch('https://server-site-psi-six.vercel.app/review')
       .then(res => res.json())
       .then(data => {
         const specificReview = data?.filter((item) => item.property_title === property?.property_title);
@@ -33,7 +33,7 @@ const AdvertisementDetails = () => {
   }, []);
 
   useEffect(() => {
-    fetch('http://localhost:5000/report')
+    fetch('https://server-site-psi-six.vercel.app/report')
       .then(res => res.json())
       .then(data => {
         const specificReport = data?.filter((item) => item.property_title === property?.property_title);
@@ -59,7 +59,7 @@ const AdvertisementDetails = () => {
 
 
 
-    fetch('http://localhost:5000/wishedProperty', {
+    fetch('https://server-site-psi-six.vercel.app/wishedProperty', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -110,7 +110,7 @@ const AdvertisementDetails = () => {
     };
 
 
-    fetch("http://localhost:5000/review", {
+    fetch("https://server-site-psi-six.vercel.app/review", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -162,7 +162,7 @@ const AdvertisementDetails = () => {
     };
 
 
-    fetch("http://localhost:5000/report", {
+    fetch("https://server-site-psi-six.vercel.app/report", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

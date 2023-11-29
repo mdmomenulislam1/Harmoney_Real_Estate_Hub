@@ -11,7 +11,7 @@ import { FaQuoteRight } from "react-icons/fa";
 const Review = () => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:5000/review')
+    fetch('https://server-site-psi-six.vercel.app/review')
       .then(res => res.json())
       .then(data => {
         const difference = data.sort((a, b) => a?.review_time - b.review_time);

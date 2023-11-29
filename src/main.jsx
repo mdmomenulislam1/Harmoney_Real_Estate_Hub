@@ -73,13 +73,13 @@ const router = createBrowserRouter([
       {
         path: "/advertiseProperty/:_id",
         element: <PrivateRoute> <AdvertisementDetails></AdvertisementDetails> </PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/advertiseProperty/${params._id}`)
+        loader: ({ params }) => fetch(`https://server-site-psi-six.vercel.app/advertiseProperty/${params._id}`)
       },
       
       {
         path: "/allProperties/:_id",
         element: <PrivateRoute><DetailsPage></DetailsPage></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/property/${params._id}`)
+        loader: ({ params }) => fetch(`https://server-site-psi-six.vercel.app/property/${params._id}`)
       }
     ]
   },
@@ -95,7 +95,7 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/editProfile/:_id",
         element: <PrivateRoute> <EditProfile></EditProfile> </PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/user/${params._id}`)
+        loader: ({ params }) => fetch(`https://server-site-psi-six.vercel.app/user/${params._id}`)
       },
       {
         path: "/dashboard/wishlist",
@@ -105,13 +105,13 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/wishlist/:_id",
         element:<GeneralRoute> <Offered></Offered> </GeneralRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/wishedProperty/${params._id}`)
+        loader: ({ params }) => fetch(`https://server-site-psi-six.vercel.app/wishedProperty/${params._id}`)
       },
 
       {
         path: "/dashboard/payment/:_id",
         element:<GeneralRoute> <Payment></Payment> </GeneralRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/offeredProperty/${params._id}`)
+        loader: ({ params }) => fetch(`https://server-site-psi-six.vercel.app/offeredProperty/${params._id}`)
       },
 
       {
@@ -150,7 +150,7 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/update/:_id",
         element: <AgentRoute> <UpdatedProperty></UpdatedProperty></AgentRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/property/${params._id}`)
+        loader: ({ params }) => fetch(`https://server-site-psi-six.vercel.app/property/${params._id}`)
       },
       {
         path: "/dashboard/adminProfile",

@@ -61,7 +61,7 @@ const EditProfile = () => {
         permanentAddress
       };
 
-      const serverResponse = await fetch(`http://localhost:5000/user/${_id}`, {
+      const serverResponse = await fetch(`https://server-site-psi-six.vercel.app/user/${_id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
