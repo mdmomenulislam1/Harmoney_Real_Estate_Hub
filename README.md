@@ -1,7 +1,7 @@
 
 # Live link Assignment12_category_0010
 
-## https://zippy-praline-a2f0eb.netlify.app
+## https://harmony-real-estate.netlify.app
 
 
 
@@ -26,13 +26,44 @@
    Users can save their preferred properties and searches, receiving notifications when new properties matching their criteria are listed.
 
 ## Payment Integration:
-    The platform integrates with secure payment gateways, allowing for seamless online transactions for property purchases or rental deposits.
+   The platform integrates with secure payment gateways, allowing for seamless online transactions for property purchases or rental deposits.
 
 ## Reviews and Ratings:
-    Users can leave reviews and ratings for properties they have interacted with, fostering trust and credibility within the community.
+   Users can leave reviews and ratings for properties they have interacted with, fostering trust and credibility within the community.
 
 ## Admin Dashboard:
-    Administrators have a dedicated backend dashboard to manage users, listings, and reported content. It serves as a comprehensive tool for monitoring and analyzing platform activity.
+   Administrators have a dedicated backend dashboard to manage users, listings, and reported content. It serves as a comprehensive tool for monitoring and analyzing platform activity.
+
+## Agent Dashboard:
+   An agent can add property, update property, sell the property, receive offers etc.
 
 ## Responsive Design:
-    The platform is designed to be accessible and user-friendly across various devices, ensuring a consistent experience on desktops, tablets, and smartphones.
+   The platform is designed to be accessible and user-friendly across various devices, ensuring a consistent experience on desktops, tablets, and smartphones.
+
+
+# Used Technologies
+
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=tailwind,firebase,mongodb,react,express,nodejs" />
+  </a>
+</p>
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=html,css,js,github,vscode" />
+  </a>
+</p>
+
+
+# Used Packages
+ - react-rating
+ - react-stripe-js
+ - tanstack
+ - axios
+ - helmet
+ - localforage
+ - match-sorter
+ - react-icons
+ - react-responsive-carousel
+ - sweetalert2
+ - swiper
