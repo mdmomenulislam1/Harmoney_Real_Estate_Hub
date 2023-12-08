@@ -26,13 +26,13 @@
    Users can save their preferred properties and searches, receiving notifications when new properties matching their criteria are listed.
 
 ## Payment Integration:
-    The platform integrates with secure payment gateways, allowing for seamless online transactions for property purchases or rental deposits.
+   The platform integrates with secure payment gateways, allowing for seamless online transactions for property purchases or rental deposits.
 
 ## Reviews and Ratings:
-    Users can leave reviews and ratings for properties they have interacted with, fostering trust and credibility within the community.
+   Users can leave reviews and ratings for properties they have interacted with, fostering trust and credibility within the community.
 
 ## Admin Dashboard:
-    Administrators have a dedicated backend dashboard to manage users, listings, and reported content. It serves as a comprehensive tool for monitoring and analyzing platform activity.
+   Administrators have a dedicated backend dashboard to manage users, listings, and reported content. It serves as a comprehensive tool for monitoring and analyzing platform activity.
 
 ## Responsive Design:
-    The platform is designed to be accessible and user-friendly across various devices, ensuring a consistent experience on desktops, tablets, and smartphones.
+   The platform is designed to be accessible and user-friendly across various devices, ensuring a consistent experience on desktops, tablets, and smartphones.
